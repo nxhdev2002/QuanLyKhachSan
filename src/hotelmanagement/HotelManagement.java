@@ -16,7 +16,7 @@ public class HotelManagement {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new DatPhongGui().setVisible(true);
+        new MainUI().setVisible(true);
     }
     
 }
