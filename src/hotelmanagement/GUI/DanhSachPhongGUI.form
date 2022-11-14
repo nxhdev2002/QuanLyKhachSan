@@ -81,7 +81,7 @@
                       <Component id="jLabel4" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="143" max="32767" attributes="0"/>
+                      <EmptySpace pref="126" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
@@ -165,22 +165,22 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#x1ea5;t c&#x1ea3;"/>
+                <Property name="text" type="java.lang.String" value="T&#x1ea5;t c&#x1ea3; (17)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ph&#xf2;ng tr&#x1ed1;ng"/>
+                <Property name="text" type="java.lang.String" value="Ph&#xf2;ng tr&#x1ed1;ng(14)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ph&#xf2;ng c&#xf3; ng&#x1b0;&#x1edd;i &#x1edf;"/>
+                <Property name="text" type="java.lang.String" value="Ph&#xf2;ng c&#xf3; ng&#x1b0;&#x1edd;i &#x1edf; (2)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ph&#xf2;ng &#x111;ang d&#x1ecd;n d&#x1eb9;p"/>
+                <Property name="text" type="java.lang.String" value="Ph&#xf2;ng &#x111;ang d&#x1ecd;n d&#x1eb9;p (1)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField1">

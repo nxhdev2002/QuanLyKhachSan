@@ -8,15 +8,25 @@ package hotelmanagement.GUI;
  *
  * @author nguyenxuanhoang
  */
-public class DatPhongGui extends javax.swing.JFrame {
+public class DatPhongGUI extends javax.swing.JFrame {
 
+    private static DatPhongGUI instance = null;
+    
+    public static DatPhongGUI getInstance() {
+        if (instance == null)
+            instance = new DatPhongGUI();
+        return instance;
+    }
+    
     /**
      * Creates new form DatPhongGui
      */
-    public DatPhongGui() {
+    
+    public DatPhongGUI() {
         initComponents();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -317,20 +327,21 @@ public class DatPhongGui extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DatPhongGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatPhongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DatPhongGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatPhongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DatPhongGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatPhongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DatPhongGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatPhongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DatPhongGui().setVisible(true);
+                new DatPhongGUI().setVisible(true);
             }
         });
     }

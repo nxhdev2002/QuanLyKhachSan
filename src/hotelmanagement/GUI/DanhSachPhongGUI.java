@@ -141,13 +141,13 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         jLabel4.setBackground(new java.awt.Color(255, 153, 153));
         jLabel4.setOpaque(true);
 
-        jLabel5.setText("Tất cả");
+        jLabel5.setText("Tất cả (17)");
 
-        jLabel6.setText("Phòng trống");
+        jLabel6.setText("Phòng trống(14)");
 
-        jLabel7.setText("Phòng có người ở");
+        jLabel7.setText("Phòng có người ở (2)");
 
-        jLabel8.setText("Phòng đang dọn dẹp");
+        jLabel8.setText("Phòng đang dọn dẹp (1)");
 
         jTextField1.setText("Tìm kiếm");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +199,7 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addGroup(chuThichPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(chuThichPanelLayout.createSequentialGroup()
                         .addComponent(jRadioButton1)
