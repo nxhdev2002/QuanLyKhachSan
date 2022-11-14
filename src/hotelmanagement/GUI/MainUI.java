@@ -52,7 +52,6 @@ public class MainUI extends javax.swing.JFrame {
         setTitle("Hệ Thống Quản Lý Khách Sạn");
         setBackground(new java.awt.Color(255, 51, 0));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(1548, 748));
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
