@@ -89,7 +89,7 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
 
         jLabel2.setText("Khách Hàng:");
 
-        jLabel3.setText("Nguyễn Văn B");
+        jLabel3.setText("Nguyễn Văn C");
 
         jLabel4.setText("SĐT Phòng");
 

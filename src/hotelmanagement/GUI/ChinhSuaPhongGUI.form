@@ -182,7 +182,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nguy&#x1ec5;n V&#x103;n A"/>
+            <Property name="text" type="java.lang.String" value="Nguy&#x1ec5;n V&#x103;n C"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
