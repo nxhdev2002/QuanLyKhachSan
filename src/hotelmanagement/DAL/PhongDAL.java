@@ -16,8 +16,8 @@ public class PhongDAL {
     private ArrayList<PhongDTO> DSPhong;
     
     private PhongDAL() {
-            DSPhong = new ArrayList<PhongDTO>();
-            loadData();
+        this.DSPhong = new ArrayList<PhongDTO>();
+        loadData();
     }
     
     public static PhongDAL getInstance() {
@@ -27,7 +27,7 @@ public class PhongDAL {
         return instance;
     }
     
-    private void loadData() {
+    public ArrayList<PhongDTO> loadData() {
         String query = "SELECT * FROM Phong";
         try {
             ResultSet rs = DAL.getInstance().executeQueryToGetData(query);
@@ -38,10 +38,21 @@ public class PhongDAL {
                 phong.setTrangThai(rs.getInt("trangthai"));
                 phong.setMaLoaiPhong(rs.getInt("maloaiphong"));
                 phong.setGhiChu(rs.getString("ghichu"));
-                DSPhong.add(phong);
+                this.DSPhong.add(phong);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return this.DSPhong;
     } 
+
+    public Boolean deletePhong(PhongDTO phong) {
+        String query = "DELETE FROM Phong WHERE (`maphong` = '" + phong.getMaPhong() + "');";
+        try {
+            return DAL.getInstance().executeQueryUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

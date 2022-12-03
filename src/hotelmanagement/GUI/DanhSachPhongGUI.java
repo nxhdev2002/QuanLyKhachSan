@@ -4,6 +4,7 @@
  */
 package hotelmanagement.GUI;
 
+import hotelmanagement.BLL.PhongBLL;
 import hotelmanagement.DTO.PhongDTO;
 import java.util.ArrayList;
 
@@ -21,15 +22,19 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         return instance;
     }
     
-    public 
-    
     
     /**
      * Creates new form DanhSachPhong
      */
     
     public DanhSachPhongGUI() {
+        loadData();
         initComponents();
+    }
+
+    public void loadData() {
+        PhongBLL.getInstance().loadData();
+        // phongPanel.add();
     }
 
     /**

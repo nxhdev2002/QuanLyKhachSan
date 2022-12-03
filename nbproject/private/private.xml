@@ -3,15 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/GUI/CheckOutGUI.java</file>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/GUI/MainUI.java</file>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/GUI/DanhSachPhongGUI.java</file>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/GUI/DatPhongGUI.java</file>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/HotelManagement.java</file>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/GUI/NhanVienGUI.java</file>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/GUI/KiemTraPhongGUI.java</file>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/GUI/SuaDichVuGUI.java</file>
-            <file>file:/Users/nguyenxuanhoang/Dev/JAVA/HotelManagement/src/hotelmanagement/GUI/ChinhSuaPhongGUI.java</file>
+            <file>file:/D:/JAVA/QuanLyKhachSan/src/hotelmanagement/GUI/DatPhongGUI.java</file>
+            <file>file:/D:/JAVA/QuanLyKhachSan/src/hotelmanagement/GUI/NhanVienGUI.java</file>
+            <file>file:/D:/JAVA/QuanLyKhachSan/src/hotelmanagement/GUI/MainUI.java</file>
+            <file>file:/D:/JAVA/QuanLyKhachSan/src/hotelmanagement/GUI/ChinhSuaPhongGUI.java</file>
+            <file>file:/D:/JAVA/QuanLyKhachSan/src/hotelmanagement/GUI/DanhSachPhongGUI.java</file>
+            <file>file:/D:/JAVA/QuanLyKhachSan/src/hotelmanagement/DAL/DAL.java</file>
+            <file>file:/D:/JAVA/QuanLyKhachSan/src/hotelmanagement/HotelManagement.java</file>
+            <file>file:/D:/JAVA/QuanLyKhachSan/src/PhongBLL/java.java</file>
         </group>
     </open-files>
 </project-private>

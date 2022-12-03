@@ -12,7 +12,11 @@ public class DAL {
 
     public static DAL instance;
     private Connection conn;
-    private Statement state;
+    // private Statement state;
+
+    public DAL() {
+        this.connectDB();
+    }
 
     public static DAL getInstance() {
         if (instance == null) {
@@ -24,6 +28,7 @@ public class DAL {
     public void connectDB() {
         try {
             conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+            System.out.println("Connect success");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -36,7 +41,6 @@ public class DAL {
                 new DAL();
             Statement statement = conn.createStatement();
             return statement.executeUpdate(query);
-
         } catch (Exception ex) {
             return -1;
         }
