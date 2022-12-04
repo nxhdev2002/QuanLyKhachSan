@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class PhongDAL {
     private static PhongDAL instance;
     private ArrayList<PhongDTO> DSPhong;
-    
+    private PhongDTO phong;
     private PhongDAL() {
         this.DSPhong = new ArrayList<PhongDTO>();
         loadData();
@@ -31,8 +31,9 @@ public class PhongDAL {
         String query = "SELECT * FROM Phong";
         try {
             ResultSet rs = DAL.getInstance().executeQueryToGetData(query);
+            
             while (rs.next()) {
-                PhongDTO phong = new PhongDTO();
+                phong = new PhongDTO();
                 phong.setMaPhong(rs.getInt("maphong"));
                 phong.setSoPhong(rs.getInt("sophong"));
                 phong.setTrangThai(rs.getInt("trangthai"));
@@ -45,14 +46,4 @@ public class PhongDAL {
         }
         return this.DSPhong;
     } 
-
-    public Boolean deletePhong(PhongDTO phong) {
-        String query = "DELETE FROM Phong WHERE (`maphong` = '" + phong.getMaPhong() + "');";
-        try {
-            return DAL.getInstance().executeQueryUpdate(query);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 }

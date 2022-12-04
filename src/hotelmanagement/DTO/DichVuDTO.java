@@ -1,13 +1,13 @@
 package hotelmanagement.DTO;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
 
 public class DichVuDTO {
     private int maDichVu;
     private String tenDichVu;
-    private DecimalFormat Tien;
+    private BigDecimal Tien;
     private int soLuong;
-    private DecimalFormat thanhTien;
+    private BigDecimal thanhTien;
     private String ghiChu;
     
     public int getMaDichVu() {
@@ -22,11 +22,11 @@ public class DichVuDTO {
     public void setTenDichVu(String tenDichVu) {
         this.tenDichVu = tenDichVu;
     }
-    public DecimalFormat getTien() {
+    public BigDecimal getTien() {
         return Tien;
     }
-    public void setTien(DecimalFormat tien) {
-        Tien = tien;
+    public void setTien(BigDecimal bigDecimal) {
+        Tien = bigDecimal;
     }
     public int getSoLuong() {
         return soLuong;
@@ -34,11 +34,11 @@ public class DichVuDTO {
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
-    public DecimalFormat getThanhTien() {
+    public BigDecimal getThanhTien() {
         return thanhTien;
     }
-    public void setThanhTien(DecimalFormat thanhTien) {
-        this.thanhTien = thanhTien;
+    public void setThanhTien(BigDecimal bigDecimal) {
+        this.thanhTien = bigDecimal;
     }
     public String getGhiChu() {
         return ghiChu;

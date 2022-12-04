@@ -20,21 +20,7 @@ public class PhongBLL {
     }
 
     public void loadData() {
-        ArrayList<String> tang = new ArrayList<String>();
-        ArrayList<ArrayList<PhongDTO>> phongMoiTang = new ArrayList<ArrayList<PhongDTO>>();
+        // PhongDTO[] tang = new ;
         this.DSPhong = PhongDAL.getInstance().loadData();
-        for (PhongDTO phong : DSPhong) {
-            char firstChar = Integer.toString(phong.getSoPhong()).charAt(0);
-            if (!tang.contains(Character.toString(firstChar))) {
-                tang.add(Character.toString(firstChar));
-            } else {
-                phongMoiTang.get(firstChar).add(phong);
-            }
-        }
-        System.out.println("LOAD DATA:");
-        for (int i = 0; i < tang.size(); i++) {
-                System.out.print(tang.get(i));
-                System.out.print(", ");
-        }
     }
 }

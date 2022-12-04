@@ -1,14 +1,14 @@
 package hotelmanagement.DTO;
 
-import java.text.DecimalFormat;
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.util.Date;
 
 public class DoanhThuDTO {
     private int maDoanhThu;
-    private LocalDate ngayThang;
-    private DecimalFormat tienHoaDon;
-    private DecimalFormat phiDuyTri;
-    private DecimalFormat tongKet;
+    private Date ngayThang;
+    private BigDecimal tienHoaDon;
+    private BigDecimal phiDuyTri;
+    private BigDecimal tongKet;
     private String ghiChu;
     public int getMaDoanhThu() {
         return maDoanhThu;
@@ -16,29 +16,29 @@ public class DoanhThuDTO {
     public void setMaDoanhThu(int maDoanhThu) {
         this.maDoanhThu = maDoanhThu;
     }
-    public LocalDate getNgayThang() {
+    public Date getNgayThang() {
         return ngayThang;
     }
-    public void setNgayThang(LocalDate ngayThang) {
+    public void setNgayThang(Date ngayThang) {
         this.ngayThang = ngayThang;
     }
-    public DecimalFormat getTienHoaDon() {
+    public BigDecimal getTienHoaDon() {
         return tienHoaDon;
     }
-    public void setTienHoaDon(DecimalFormat tienHoaDon) {
-        this.tienHoaDon = tienHoaDon;
+    public void setTienHoaDon(BigDecimal bigDecimal) {
+        this.tienHoaDon = bigDecimal;
     }
-    public DecimalFormat getPhiDuyTri() {
+    public BigDecimal getPhiDuyTri() {
         return phiDuyTri;
     }
-    public void setPhiDuyTri(DecimalFormat phiDuyTri) {
-        this.phiDuyTri = phiDuyTri;
+    public void setPhiDuyTri(BigDecimal bigDecimal) {
+        this.phiDuyTri = bigDecimal;
     }
-    public DecimalFormat getTongKet() {
+    public BigDecimal getTongKet() {
         return tongKet;
     }
-    public void setTongKet(DecimalFormat tongKet) {
-        this.tongKet = tongKet;
+    public void setTongKet(BigDecimal bigDecimal) {
+        this.tongKet = bigDecimal;
     }
     public String getGhiChu() {
         return ghiChu;

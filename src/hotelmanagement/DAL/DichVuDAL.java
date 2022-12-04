@@ -1,6 +1,5 @@
 package hotelmanagement.DAL;
 import java.sql.ResultSet;
-import java.text.DecimalFormat;
 
 import hotelmanagement.DTO.DichVuDTO;
 import java.util.ArrayList;
@@ -30,11 +29,10 @@ public class DichVuDAL {
                 DichVuDTO DichVu = new DichVuDTO();
                 DichVu.setMaDichVu(rs.getInt("madichvu"));
                 DichVu.setTenDichVu(rs.getString("tendichvu"));
-                DecimalFormat df = new DecimalFormat("#,###.00");
                 
-                DichVu.setTien(df.format(rs.getBigDecimal("tien")));
+                DichVu.setTien(rs.getBigDecimal("tien"));
                 DichVu.setSoLuong(rs.getInt("soluong"));
-                DichVu.setThanhTien(df);
+                DichVu.setThanhTien(rs.getBigDecimal("thanhtien"));
                 DichVu.setGhiChu(rs.getString("ghichu"));
                 this.DSDichVu.add(DichVu);
 

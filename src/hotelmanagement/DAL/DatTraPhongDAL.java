@@ -33,7 +33,7 @@ public class DatTraPhongDAL {
                 DTPhong.setCCCD(rs.getString("CCCD"));
                 DTPhong.setMaNhanVien(rs.getInt("manhanvien"));
                 DTPhong.setNgayDatPhong(rs.getDate("ngaydatphong"));
-                DTPhong.setNgayTraPhong();
+                DTPhong.setNgayTraPhong(rs.getDate("ngaytraphong"));
                 this.DatTraPhong.add(DTPhong);
             }
         } catch (Exception e) {
