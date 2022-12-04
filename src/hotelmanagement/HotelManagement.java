@@ -5,6 +5,7 @@
 package hotelmanagement;
 
 import hotelmanagement.GUI.*;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,7 +16,7 @@ public class HotelManagement {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         new MainUI().setVisible(true);
     }
     

@@ -20,6 +20,7 @@ public class MainUI extends javax.swing.JFrame {
         this.doiPanel(DanhSachPhongGUI.getInstance());
     }
     
+    
     public void doiPanel(JPanel panel) {
         System.out.print(panel);
         rightPanel.removeAll();
