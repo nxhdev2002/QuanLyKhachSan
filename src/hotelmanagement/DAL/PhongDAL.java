@@ -46,4 +46,23 @@ public class PhongDAL {
         }
         return this.DSPhong;
     } 
+
+    public int addData(PhongDTO Phong) {
+        String query = String.format(
+            "INSERT INTO phong(sophong, soTang, trangthai, maloaiphong, ghichu) VALUES (%1$s, %2$s, %3$s, %4$s, %5$s)",
+            phong.getSoPhong(), phong.getSoTang(), phong.getTrangThai(), phong.getMaLoaiPhong(), phong.getGhiChu());
+            return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+    public int removeData(PhongDTO Phong) {
+        String query = "DELETE FROM Phong WHERE maphong=" + Phong.getMaPhong();
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+    public int updateData(PhongDTO phongCu, PhongDTO phongMoi) {
+        String query = String.format(
+            "UPDATE Phong SET sophong = '%1$s', soTang = '%2$s', trangthai = '%3$s', maloaiphong = '%4$s', ghichu = '%5$s' WHERE maphong=" + phongCu.getMaPhong()
+        , phongMoi.getSoPhong(), phongMoi.getSoTang(), phongMoi.getTrangThai(), phongMoi.getMaLoaiPhong(), phongMoi.getGhiChu());
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
 }

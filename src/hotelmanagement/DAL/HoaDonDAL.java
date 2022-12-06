@@ -46,4 +46,18 @@ public class HoaDonDAL {
         }
         return this.DSPhong;
     } 
+
+    public int addData(HoaDonDTO HoaDon) {
+        String query = String.format(
+            "INSERT INTO HoaDon(TenNhanVien, TenKhachHang, MaPhong, SoNgayThue, DonGia, ThanhTien, NgayThanhToan, PhuongThucThanhToan) VALUES (%1$s, %2$s, %3$s, %4$s, %5$s, %6$s, %7$s, %8$s)",
+            HoaDon.getTenNhanVien(), HoaDon.getTenKhachHang(), HoaDon.getMaPhong(), HoaDon.getSoNgayThue(), HoaDon.getDonGia(), HoaDon.getThanhTien(), HoaDon.getNgayThanhToan(), HoaDon.getPhuongThucThanhToan());
+            return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+    public int removeData(HoaDonDTO HoaDon) {
+        String query = "DELETE FROM HoaDon WHERE MaHoaDon=" + HoaDon.getMaHoaDon();
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+
 }
