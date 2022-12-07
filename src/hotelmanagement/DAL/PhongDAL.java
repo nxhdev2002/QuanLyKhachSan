@@ -36,6 +36,7 @@ public class PhongDAL {
                 phong = new PhongDTO();
                 phong.setMaPhong(rs.getInt("maphong"));
                 phong.setSoPhong(rs.getInt("sophong"));
+                phong.setSoTang(rs.getInt("sotang"));
                 phong.setTrangThai(rs.getInt("trangthai"));
                 phong.setMaLoaiPhong(rs.getInt("maloaiphong"));
                 phong.setGhiChu(rs.getString("ghichu"));
