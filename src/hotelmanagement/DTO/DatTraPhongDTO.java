@@ -1,13 +1,13 @@
 package hotelmanagement.DTO;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class DatTraPhongDTO {
     private int maHopDong;
     private String CCCD;
     private int maNhanVien;
-    private LocalDate ngayDatPhong;
-    private LocalDate ngayTraPhong;
+    private Date ngayDatPhong;
+    private Date ngayTraPhong;
     public int getMaHopDong() {
         return maHopDong;
     }
@@ -26,16 +26,16 @@ public class DatTraPhongDTO {
     public void setMaNhanVien(int maNhanVien) {
         this.maNhanVien = maNhanVien;
     }
-    public LocalDate getNgayDatPhong() {
+    public Date getNgayDatPhong() {
         return ngayDatPhong;
     }
-    public void setNgayDatPhong(LocalDate ngayDatPhong) {
+    public void setNgayDatPhong(Date ngayDatPhong) {
         this.ngayDatPhong = ngayDatPhong;
     }
-    public LocalDate getNgayTraPhong() {
+    public Date getNgayTraPhong() {
         return ngayTraPhong;
     }
-    public void setNgayTraPhong(LocalDate ngayTraPhong) {
+    public void setNgayTraPhong(Date ngayTraPhong) {
         this.ngayTraPhong = ngayTraPhong;
     }
 

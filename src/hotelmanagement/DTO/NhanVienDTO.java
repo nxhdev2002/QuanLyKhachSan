@@ -1,13 +1,13 @@
 package hotelmanagement.DTO;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class NhanVienDTO {
     private int maNhanVien;
     private String tenNhanVien;
     private int gioiTinh;
     private String soDienThoai;
-    private LocalDate ngaySinh;
+    private Date ngaySinh;
     private String diaChi;
 
     public int getMaNhanVien() {
@@ -34,10 +34,10 @@ public class NhanVienDTO {
     public void setSoDienThoai(String soDienThoai) {
         this.soDienThoai = soDienThoai;
     }
-    public LocalDate getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
-    public void setNgaySinh(LocalDate ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
     public String getDiaChi() {

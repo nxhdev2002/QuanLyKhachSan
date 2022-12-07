@@ -1,6 +1,13 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\Haizz\\Downloads\\mysql-connector-java-8.0.17.jar"
-    ],
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "Lib/DateChooserDemo.jar",
+            "Lib/jcalendar-1.3.3.jar",
+            "Lib/mysql-connector-java-8.0.17.jar"
+        ],
+        "exclude": [
+            "lib/DateChooserDemo.jar"
+        ]
+    },
 }

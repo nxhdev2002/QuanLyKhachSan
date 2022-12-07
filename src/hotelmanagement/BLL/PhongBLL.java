@@ -6,6 +6,7 @@ import hotelmanagement.DAL.PhongDAL;
 import hotelmanagement.DTO.PhongDTO;
 
 public class PhongBLL {
+
     public static PhongBLL instance;
     public ArrayList<PhongDTO> DSPhong;
 
@@ -14,27 +15,34 @@ public class PhongBLL {
     }
 
     public static PhongBLL getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new PhongBLL();
+        }
         return instance;
     }
 
-    public void loadData() {
-        ArrayList<String> tang = new ArrayList<String>();
-        ArrayList<ArrayList<PhongDTO>> phongMoiTang = new ArrayList<ArrayList<PhongDTO>>();
+    public ArrayList<PhongDTO> loadData() {
         this.DSPhong = PhongDAL.getInstance().loadData();
-        for (PhongDTO phong : DSPhong) {
-            char firstChar = Integer.toString(phong.getSoPhong()).charAt(0);
-            if (!tang.contains(Character.toString(firstChar))) {
-                tang.add(Character.toString(firstChar));
-            } else {
-                phongMoiTang.get(firstChar).add(phong);
+        return this.DSPhong;
+    }
+
+    public ArrayList<PhongDTO> loadDataByTang(int Tang) {
+        ArrayList<PhongDTO> rs = new ArrayList<PhongDTO>();
+        for (int i = 0; i < this.DSPhong.size(); i++) {
+            if (this.DSPhong.get(i).getSoTang() == Tang) {
+                rs.add(this.DSPhong.get(i));
             }
         }
-        System.out.println("LOAD DATA:");
-        for (int i = 0; i < tang.size(); i++) {
-                System.out.print(tang.get(i));
-                System.out.print(", ");
+        return rs;
+    }
+
+    public int countByRoomStatus(int RoomStatus) {
+        int count = 0;
+        for (int i = 0; i < this.DSPhong.size(); i++) {
+            if (this.DSPhong.get(i).getTrangThai() == RoomStatus) {
+                count+=1;
+            }
         }
+        return count;
     }
 }

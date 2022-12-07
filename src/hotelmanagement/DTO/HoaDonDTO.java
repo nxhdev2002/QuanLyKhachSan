@@ -1,7 +1,7 @@
 package hotelmanagement.DTO;
 
 import java.text.DecimalFormat;
-import java.time.LocalDate;
+import java.util.Date;
 
 public class HoaDonDTO {
     private int maHoaDon;
@@ -11,7 +11,7 @@ public class HoaDonDTO {
     private int soNgayThue;
     private DecimalFormat donGia;
     private DecimalFormat thanhTien;
-    private LocalDate ngayThanhToan;
+    private Date ngayThanhToan;
     private String phuongThucThanhToan;
 
     public int getMaHoaDon() {
@@ -56,10 +56,10 @@ public class HoaDonDTO {
     public void setThanhTien(DecimalFormat thanhTien) {
         this.thanhTien = thanhTien;
     }
-    public LocalDate getNgayThanhToan() {
+    public Date getNgayThanhToan() {
         return ngayThanhToan;
     }
-    public void setNgayThanhToan(LocalDate ngayThanhToan) {
+    public void setNgayThanhToan(Date ngayThanhToan) {
         this.ngayThanhToan = ngayThanhToan;
     }
     public String getPhuongThucThanhToan() {

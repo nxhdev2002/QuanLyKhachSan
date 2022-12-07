@@ -33,9 +33,8 @@ public class NhanVienDAL {
                 NhanVien.setTenNhanVien(rs.getString("tennhanvien"));
                 NhanVien.setGioiTinh(rs.getInt("gioitinh"));
                 NhanVien.setSoDienThoai(rs.getString("sodienthoai"));
-                NhanVien.setNgaySinh();
-                NhanVien.setDiaChi(rs.getString("DiaChi"));
-                
+                NhanVien.setNgaySinh(rs.getDate("ngaysinh"));
+                NhanVien.setDiaChi(rs.getString("diaChi"));
                 this.DSPhong.add(NhanVien);
             }
         } catch (Exception e) {
@@ -43,3 +42,4 @@ public class NhanVienDAL {
         }
         return this.DSPhong;
     } 
+}

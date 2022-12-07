@@ -33,7 +33,7 @@ public class DatTraPhongDAL {
                 DTPhong.setCCCD(rs.getString("CCCD"));
                 DTPhong.setMaNhanVien(rs.getInt("manhanvien"));
                 DTPhong.setNgayDatPhong(rs.getDate("ngaydatphong"));
-                DTPhong.setNgayTraPhong();
+                DTPhong.setNgayTraPhong(rs.getDate("ngaytraphong"));
                 this.DatTraPhong.add(DTPhong);
             }
         } catch (Exception e) {
@@ -41,4 +41,18 @@ public class DatTraPhongDAL {
         }
         return this.DatTraPhong;
     } 
+
+
+    public int addData(DatTraPhongDTO datTraPhong) {
+        String query = String.format(
+            "INSERT INTO DatTraPhong(CCCD, MaNhanVien, NgayDatPhong, NgayTraPhong) VALUES (%1$s, %2$s, %3$s, %4$s)",
+            datTraPhong.getCCCD(), datTraPhong.getMaNhanVien(), datTraPhong.getNgayDatPhong(), datTraPhong.getNgayTraPhong());
+            return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+    public int removeData(DatTraPhongDTO datTraPhong) {
+        String query = "DELETE FROM DatTraPhong WHERE MaHopDong=" + datTraPhong.getMaHopDong();
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
+
 }
