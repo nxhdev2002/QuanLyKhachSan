@@ -44,7 +44,7 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         this.countCleaningRoom.setText(Integer.toString(PhongBLL.getInstance().countByRoomStatus(-1)));
         this.countEmptyRoom.setText(Integer.toString(PhongBLL.getInstance().countByRoomStatus(0)));
         for (int i = 0; i < DSPhong.size(); i++) {
-            phongPanel.add(new PhongComponent());  
+            phongPanel.add(new PhongComponent(DSPhong.get(i)));  
         }
     }
 
@@ -219,7 +219,7 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
 
         phongPanel.setMaximumSize(new java.awt.Dimension(240, 50));
         phongPanel.setPreferredSize(new java.awt.Dimension(240, 50));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 25);
         flowLayout1.setAlignOnBaseline(true);
         phongPanel.setLayout(flowLayout1);
         jScrollPane1.setViewportView(phongPanel);
@@ -229,9 +229,9 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(chuthichPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())

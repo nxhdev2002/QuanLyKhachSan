@@ -17,7 +17,6 @@ public class PhongDAL {
     private PhongDTO phong;
     private PhongDAL() {
         this.DSPhong = new ArrayList<PhongDTO>();
-        loadData();
     }
     
     public static PhongDAL getInstance() {

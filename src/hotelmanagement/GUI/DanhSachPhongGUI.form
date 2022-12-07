@@ -45,9 +45,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="chuthichPanel" max="32767" attributes="0"/>
-                  <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -307,7 +307,7 @@
                       <Parameters>
                         <CodeExpression id="2">
                           <ExpressionOrigin>
-                            <Value type="int" value="0"/>
+                            <Value type="int" value="1"/>
                           </ExpressionOrigin>
                         </CodeExpression>
                         <CodeExpression id="3">
