@@ -12,7 +12,6 @@ import hotelmanagement.DTO.PhongDTO;
  */
 public class DatPhongGUI extends javax.swing.JFrame {
 
-    private static DatPhongGUI instance = null;
     private PhongDTO Phong;
     
     /**

@@ -5,6 +5,7 @@
 package hotelmanagement.GUI.Components;
 
 import hotelmanagement.DTO.PhongDTO;
+import hotelmanagement.GUI.ChinhSuaPhongGUI;
 import hotelmanagement.GUI.DatPhongGUI;
 import java.awt.Color;
 
@@ -15,6 +16,7 @@ import java.awt.Color;
 public class PhongComponent extends javax.swing.JPanel {
     private PhongDTO Phong;
     private DatPhongGUI datphongGUI;
+    private ChinhSuaPhongGUI ChinhSuaPhongGUI;
     /**
      * Creates new form PhongComponent
      */
@@ -135,8 +137,18 @@ public class PhongComponent extends javax.swing.JPanel {
             } else {
                 this.datphongGUI.setVisible(true);
             }
+        } else if (this.Phong.getTrangThai() == 1){
+            if (this.ChinhSuaPhongGUI == null) {
+                this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong);
+                this.ChinhSuaPhongGUI.setVisible(true);
+            } else {
+                this.ChinhSuaPhongGUI.setVisible(true);
+            }            
+                            
+            }
         }
-    }//GEN-LAST:event_rightButtonMouseClicked
+        
+    //GEN-LAST:event_rightButtonMouseClicked
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
