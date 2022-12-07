@@ -6,6 +6,7 @@ import hotelmanagement.DAL.PhongDAL;
 import hotelmanagement.DTO.PhongDTO;
 
 public class PhongBLL {
+
     public static PhongBLL instance;
     public ArrayList<PhongDTO> DSPhong;
 
@@ -14,8 +15,9 @@ public class PhongBLL {
     }
 
     public static PhongBLL getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new PhongBLL();
+        }
         return instance;
     }
 
@@ -26,9 +28,21 @@ public class PhongBLL {
 
     public ArrayList<PhongDTO> loadDataByTang(int Tang) {
         ArrayList<PhongDTO> rs = new ArrayList<PhongDTO>();
-        for (int i = 0; i<this.DSPhong.size(); i++) {
-            if (this.DSPhong.get(i).getSoTang() == Tang) rs.add(this.DSPhong.get(i));
+        for (int i = 0; i < this.DSPhong.size(); i++) {
+            if (this.DSPhong.get(i).getSoTang() == Tang) {
+                rs.add(this.DSPhong.get(i));
+            }
         }
         return rs;
+    }
+
+    public int countByRoomStatus(int RoomStatus) {
+        int count = 0;
+        for (int i = 0; i < this.DSPhong.size(); i++) {
+            if (this.DSPhong.get(i).getTrangThai() == RoomStatus) {
+                count+=1;
+            }
+        }
+        return count;
     }
 }

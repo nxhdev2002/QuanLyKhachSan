@@ -4,7 +4,7 @@
  */
 package hotelmanagement;
 
-import hotelmanagement.GUI.*;
+import hotelmanagement.GUI.MainUI;
 import java.sql.SQLException;
 
 /**
