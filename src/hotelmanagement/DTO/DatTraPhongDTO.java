@@ -5,9 +5,17 @@ import java.util.Date;
 public class DatTraPhongDTO {
     private int maHopDong;
     private String CCCD;
+    private int maphong;
     private int maNhanVien;
     private Date ngayDatPhong;
     private Date ngayTraPhong;
+    public int getMaphong() {
+        return maphong;
+    }
+    public void setMaphong(int maphong) {
+        this.maphong = maphong;
+    }
+    private String ghichu;
     public int getMaHopDong() {
         return maHopDong;
     }
@@ -37,6 +45,12 @@ public class DatTraPhongDTO {
     }
     public void setNgayTraPhong(Date ngayTraPhong) {
         this.ngayTraPhong = ngayTraPhong;
+    }
+    public String getGhichu() {
+        return ghichu;
+    }
+    public void setGhichu(String ghichu) {
+        this.ghichu = ghichu;
     }
 
     

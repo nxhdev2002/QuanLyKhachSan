@@ -6,7 +6,6 @@ public class PhongDTO {
     private int soTang;
     private int trangThai;
     private int maLoaiPhong;
-    private String ghiChu;
     
     public int getMaPhong() {
         return maPhong;
@@ -38,12 +37,7 @@ public class PhongDTO {
     public void setMaLoaiPhong(int maLoaiPhong) {
         this.maLoaiPhong = maLoaiPhong;
     }
-    public String getGhiChu() {
-        return ghiChu;
-    }
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
-    }
+
     
     
     

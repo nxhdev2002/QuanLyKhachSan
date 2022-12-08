@@ -26,6 +26,12 @@ public class PhongBLL {
         return this.DSPhong;
     }
 
+    public ArrayList<PhongDTO> reloadData() {
+        this.DSPhong.clear();
+        this.DSPhong = PhongDAL.getInstance().loadData();
+        return this.DSPhong;
+    } 
+
     public ArrayList<PhongDTO> loadDataByTang(int Tang) {
         ArrayList<PhongDTO> rs = new ArrayList<PhongDTO>();
         for (int i = 0; i < this.DSPhong.size(); i++) {

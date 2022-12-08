@@ -37,6 +37,7 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
     }
 
     public void loadData() {
+        phongPanel.removeAll();
         ArrayList<PhongDTO> DSPhong = new ArrayList<PhongDTO>();
         DSPhong = PhongBLL.getInstance().loadData();
         this.countAllRoom.setText(Integer.toString(DSPhong.size()));

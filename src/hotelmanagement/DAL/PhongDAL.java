@@ -13,10 +13,8 @@ import java.util.ArrayList;
  */
 public class PhongDAL {
     private static PhongDAL instance;
-    private ArrayList<PhongDTO> DSPhong;
     private PhongDTO phong;
     private PhongDAL() {
-        this.DSPhong = new ArrayList<PhongDTO>();
     }
     
     public static PhongDAL getInstance() {
@@ -27,6 +25,7 @@ public class PhongDAL {
     }
     
     public ArrayList<PhongDTO> loadData() {
+        ArrayList<PhongDTO> DSPhong = new ArrayList<PhongDTO>();
         String query = "SELECT * FROM Phong";
         try {
             ResultSet rs = DAL.getInstance().executeQueryToGetData(query);
@@ -37,19 +36,18 @@ public class PhongDAL {
                 phong.setSoPhong(rs.getInt("sophong"));
                 phong.setTrangThai(rs.getInt("trangthai"));
                 phong.setMaLoaiPhong(rs.getInt("maloaiphong"));
-                phong.setGhiChu(rs.getString("ghichu"));
-                this.DSPhong.add(phong);
+                DSPhong.add(phong);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return this.DSPhong;
+        return DSPhong;
     } 
 
     public int addData(PhongDTO Phong) {
         String query = String.format(
-            "INSERT INTO phong(sophong, soTang, trangthai, maloaiphong, ghichu) VALUES (%1$s, %2$s, %3$s, %4$s, %5$s)",
-            phong.getSoPhong(), phong.getSoTang(), phong.getTrangThai(), phong.getMaLoaiPhong(), phong.getGhiChu());
+            "INSERT INTO phong(sophong, soTang, trangthai, maloaiphong) VALUES (%1$s, %2$s, %3$s, %4$s)",
+            phong.getSoPhong(), phong.getSoTang(), phong.getTrangThai(), phong.getMaLoaiPhong());
             return DAL.getInstance().executeQueryUpdate(query);
     }
 
@@ -58,10 +56,10 @@ public class PhongDAL {
         return DAL.getInstance().executeQueryUpdate(query);
     }
 
-    public int updateData(PhongDTO phongCu, PhongDTO phongMoi) {
+    public int changeStatus(PhongDTO Phong, int status) {
         String query = String.format(
-            "UPDATE Phong SET sophong = '%1$s', soTang = '%2$s', trangthai = '%3$s', maloaiphong = '%4$s', ghichu = '%5$s' WHERE maphong=" + phongCu.getMaPhong()
-        , phongMoi.getSoPhong(), phongMoi.getSoTang(), phongMoi.getTrangThai(), phongMoi.getMaLoaiPhong(), phongMoi.getGhiChu());
+            "UPDATE Phong SET trangthai = '%s' WHERE maphong=" + Phong.getMaPhong()
+        , status);
         return DAL.getInstance().executeQueryUpdate(query);
     }
 }

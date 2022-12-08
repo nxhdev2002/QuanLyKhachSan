@@ -1,6 +1,8 @@
 package hotelmanagement.DAL;
 import java.sql.ResultSet;
 import hotelmanagement.DTO.DatTraPhongDTO;
+import hotelmanagement.DTO.PhongDTO;
+
 import java.util.ArrayList;
 
 /**
@@ -44,10 +46,14 @@ public class DatTraPhongDAL {
 
 
     public int addData(DatTraPhongDTO datTraPhong) {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String ngaydatphong = sdf.format(datTraPhong.getNgayDatPhong());
+        String ngaytraphong = sdf.format(datTraPhong.getNgayTraPhong());
         String query = String.format(
-            "INSERT INTO DatTraPhong(CCCD, MaNhanVien, NgayDatPhong, NgayTraPhong) VALUES (%1$s, %2$s, %3$s, %4$s)",
-            datTraPhong.getCCCD(), datTraPhong.getMaNhanVien(), datTraPhong.getNgayDatPhong(), datTraPhong.getNgayTraPhong());
-            return DAL.getInstance().executeQueryUpdate(query);
+            "INSERT INTO DatTraPhong(CCCD, maphong, MaNhanVien, NgayDatPhong, NgayTraPhong, GhiChu) VALUES ('%1$s', '%2$s', '%3$s', '%4$s', '%5$s', '%6$s')",
+            datTraPhong.getCCCD(), datTraPhong.getMaphong(), datTraPhong.getMaNhanVien(), ngaydatphong, ngaytraphong, datTraPhong.getGhichu());
+        System.out.println(query);
+        return DAL.getInstance().executeQueryUpdate(query);
     }
 
     public int removeData(DatTraPhongDTO datTraPhong) {
