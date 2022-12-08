@@ -47,7 +47,7 @@ public class PhongComponent extends javax.swing.JPanel {
             default:
                 this.setBackground(new Color(204,0,0));
                 this.leftButton.setText("Checkout");
-                this.rightButton.setText("Dịch vụ");
+                this.rightButton.setText("Chỉnh sửa");
         }
         
         if (this.Phong.getMaLoaiPhong() == 1) {
@@ -71,6 +71,11 @@ public class PhongComponent extends javax.swing.JPanel {
         leftButton = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
         loaiphongLabel = new javax.swing.JLabel();
+        tenKhachHangLabel = new javax.swing.JLabel();
+        tenKhachHangLabel.setVisible(false);
+        ngaydatphongLabel = new javax.swing.JLabel();
+        ngaydatphongLabel.setVisible(false);
+        ngaytraphongLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 153, 255));
         setMaximumSize(new java.awt.Dimension(100, 100));
@@ -95,6 +100,12 @@ public class PhongComponent extends javax.swing.JPanel {
         loaiphongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loaiphongLabel.setText("jLabel1");
 
+        tenKhachHangLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        ngaydatphongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        ngaytraphongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,7 +118,10 @@ public class PhongComponent extends javax.swing.JPanel {
                         .addComponent(leftButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(rightButton))
-                    .addComponent(loaiphongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(loaiphongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tenKhachHangLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ngaydatphongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ngaytraphongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -116,7 +130,13 @@ public class PhongComponent extends javax.swing.JPanel {
                 .addComponent(phongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(loaiphongLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tenKhachHangLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(ngaydatphongLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ngaytraphongLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(leftButton)
                     .addComponent(rightButton))
@@ -148,13 +168,16 @@ public class PhongComponent extends javax.swing.JPanel {
             }
         }
         
-    //GEN-LAST:event_rightButtonMouseClicked
+//GEN-LAST:event_rightButtonMouseClicked
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton leftButton;
     private javax.swing.JLabel loaiphongLabel;
+    private javax.swing.JLabel ngaydatphongLabel;
+    private javax.swing.JLabel ngaytraphongLabel;
     private javax.swing.JLabel phongLabel;
     private javax.swing.JButton rightButton;
+    private javax.swing.JLabel tenKhachHangLabel;
     // End of variables declaration//GEN-END:variables
 }

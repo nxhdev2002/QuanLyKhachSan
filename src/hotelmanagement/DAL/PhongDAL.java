@@ -4,6 +4,8 @@
  */
 package hotelmanagement.DAL;
 import java.sql.ResultSet;
+
+import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
 import java.util.ArrayList;
 
@@ -62,4 +64,11 @@ public class PhongDAL {
         , status);
         return DAL.getInstance().executeQueryUpdate(query);
     }
-}
+
+    public int changeCustomer(PhongDTO Phong, KhachHangDTO Khach) {
+        String query = String.format(
+            "UPDATE Phong SET CCCD = '%s' WHERE maphong=" + Phong.getMaPhong()
+        , Khach.getCCCD());
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
+} 
