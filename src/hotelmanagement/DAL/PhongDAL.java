@@ -65,10 +65,4 @@ public class PhongDAL {
         return DAL.getInstance().executeQueryUpdate(query);
     }
 
-    public int changeCustomer(PhongDTO Phong, KhachHangDTO Khach) {
-        String query = String.format(
-            "UPDATE Phong SET CCCD = '%s' WHERE maphong=" + Phong.getMaPhong()
-        , Khach.getCCCD());
-        return DAL.getInstance().executeQueryUpdate(query);
-    }
 } 

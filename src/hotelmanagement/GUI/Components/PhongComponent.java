@@ -4,10 +4,16 @@
  */
 package hotelmanagement.GUI.Components;
 
+import hotelmanagement.BLL.DatPhongBLL;
+import hotelmanagement.BLL.KhachHangBLL;
+import hotelmanagement.DTO.DatTraPhongDTO;
+import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.ChinhSuaPhongGUI;
 import hotelmanagement.GUI.DatPhongGUI;
 import java.awt.Color;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -17,6 +23,7 @@ public class PhongComponent extends javax.swing.JPanel {
     private PhongDTO Phong;
     private DatPhongGUI datphongGUI;
     private ChinhSuaPhongGUI ChinhSuaPhongGUI;
+    private DatTraPhongDTO donDatPhong;
     /**
      * Creates new form PhongComponent
      */
@@ -27,11 +34,14 @@ public class PhongComponent extends javax.swing.JPanel {
     public PhongComponent(PhongDTO Phong) {
         initComponents();
         this.Phong = Phong;
-        this.setDataGUI();
+        if (Phong.getTrangThai() == 1) {
+            this.donDatPhong = DatPhongBLL.getInstance().getData(Phong);
+        }
+        setDataGUI();
     }
     
     public void setDataGUI() {
-        this.phongLabel.setText("Phòng " + Integer.toString(this.Phong.getSoPhong()));
+        this.phongLabel.setText(Integer.toString(this.Phong.getSoPhong()));
         this.setOpaque(true);
         switch (this.Phong.getTrangThai()) {
             case -1:
@@ -48,6 +58,11 @@ public class PhongComponent extends javax.swing.JPanel {
                 this.setBackground(new Color(204,0,0));
                 this.leftButton.setText("Checkout");
                 this.rightButton.setText("Chỉnh sửa");
+                KhachHangDTO Khach = KhachHangBLL.getInstance().getDataFromCCCD(this.donDatPhong.getCCCD());
+                this.tenKhachHangLabel.setText(Khach.getTenKhachHang()); 
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                this.ngayBatDauLabel.setText(df.format(this.donDatPhong.getNgayDatPhong()));
+                this.ngayKetThucLabel.setText(df.format(this.donDatPhong.getNgayTraPhong()));
         }
         
         if (this.Phong.getMaLoaiPhong() == 1) {
@@ -70,12 +85,10 @@ public class PhongComponent extends javax.swing.JPanel {
         phongLabel = new javax.swing.JLabel();
         leftButton = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
-        loaiphongLabel = new javax.swing.JLabel();
         tenKhachHangLabel = new javax.swing.JLabel();
-        tenKhachHangLabel.setVisible(false);
-        ngaydatphongLabel = new javax.swing.JLabel();
-        ngaydatphongLabel.setVisible(false);
-        ngaytraphongLabel = new javax.swing.JLabel();
+        loaiphongLabel = new javax.swing.JLabel();
+        ngayBatDauLabel = new javax.swing.JLabel();
+        ngayKetThucLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 153, 255));
         setMaximumSize(new java.awt.Dimension(100, 100));
@@ -97,14 +110,17 @@ public class PhongComponent extends javax.swing.JPanel {
             }
         });
 
+        tenKhachHangLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tenKhachHangLabel.setText("   ");
+
         loaiphongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loaiphongLabel.setText("jLabel1");
 
-        tenKhachHangLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ngayBatDauLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ngayBatDauLabel.setText("  ");
 
-        ngaydatphongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        ngaytraphongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ngayKetThucLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ngayKetThucLabel.setText("  ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,14 +130,14 @@ public class PhongComponent extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tenKhachHangLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(leftButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(rightButton))
                     .addComponent(loaiphongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tenKhachHangLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ngaydatphongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ngaytraphongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ngayBatDauLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ngayKetThucLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -132,11 +148,11 @@ public class PhongComponent extends javax.swing.JPanel {
                 .addComponent(loaiphongLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tenKhachHangLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(ngaydatphongLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ngayBatDauLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ngaytraphongLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ngayKetThucLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(leftButton)
                     .addComponent(rightButton))
@@ -174,8 +190,8 @@ public class PhongComponent extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton leftButton;
     private javax.swing.JLabel loaiphongLabel;
-    private javax.swing.JLabel ngaydatphongLabel;
-    private javax.swing.JLabel ngaytraphongLabel;
+    private javax.swing.JLabel ngayBatDauLabel;
+    private javax.swing.JLabel ngayKetThucLabel;
     private javax.swing.JLabel phongLabel;
     private javax.swing.JButton rightButton;
     private javax.swing.JLabel tenKhachHangLabel;

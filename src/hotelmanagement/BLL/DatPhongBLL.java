@@ -4,7 +4,6 @@
  */
 package hotelmanagement.BLL;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import hotelmanagement.DAL.DatTraPhongDAL;
@@ -45,14 +44,14 @@ public class DatPhongBLL {
         dattra.setGhichu(note);
         dattra.setMaphong(Phong.getMaPhong());
         PhongDAL.getInstance().changeStatus(Phong, 1);
-        PhongDAL.getInstance().changeCustomer(Phong, KhachHang);
         KhachHangDAL.getInstance().saveCustomerData(KhachHang);
         int res = DatTraPhongDAL.getInstance().addData(dattra);
-        if (res == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return res == 1;
     }
-
+    
+    public DatTraPhongDTO getData(PhongDTO Phong) {
+        return DatTraPhongDAL.getInstance().getData(Phong);
+    }
+    
+    
 }

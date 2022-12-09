@@ -2,8 +2,11 @@ package hotelmanagement.DAL;
 import java.sql.ResultSet;
 import hotelmanagement.DTO.DatTraPhongDTO;
 import hotelmanagement.DTO.PhongDTO;
+import java.sql.SQLException;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -11,11 +14,8 @@ import java.util.ArrayList;
  */
 public class DatTraPhongDAL {
     private static DatTraPhongDAL instance;
-    private ArrayList<DatTraPhongDTO> DatTraPhong;
     
     private DatTraPhongDAL() {
-        this.DatTraPhong = new ArrayList<DatTraPhongDTO>();
-        loadData();
     }
     
     public static DatTraPhongDAL getInstance() {
@@ -26,6 +26,7 @@ public class DatTraPhongDAL {
     }
     
     public ArrayList<DatTraPhongDTO> loadData() {
+        ArrayList<DatTraPhongDTO> DatTraPhong = new ArrayList<DatTraPhongDTO>();
         String query = "SELECT * FROM DatTraPhong";
         try {
             ResultSet rs = DAL.getInstance().executeQueryToGetData(query);
@@ -36,12 +37,12 @@ public class DatTraPhongDAL {
                 DTPhong.setMaNhanVien(rs.getInt("manhanvien"));
                 DTPhong.setNgayDatPhong(rs.getDate("ngaydatphong"));
                 DTPhong.setNgayTraPhong(rs.getDate("ngaytraphong"));
-                this.DatTraPhong.add(DTPhong);
+                DatTraPhong.add(DTPhong);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return this.DatTraPhong;
+        return DatTraPhong;
     } 
 
 
@@ -60,5 +61,25 @@ public class DatTraPhongDAL {
         String query = "DELETE FROM DatTraPhong WHERE MaHopDong=" + datTraPhong.getMaHopDong();
         return DAL.getInstance().executeQueryUpdate(query);
     }
-
+    
+    public DatTraPhongDTO getData(PhongDTO Phong) {
+        DatTraPhongDTO res = new DatTraPhongDTO();
+        try {
+            String query = "SELECT * FROM DatTraPhong WHERE maphong=" + Phong.getMaPhong();
+            ResultSet rs = DAL.getInstance().executeQueryToGetData(query);
+            while(rs.next()) {
+                res.setCCCD(rs.getString("CCCD"));
+                res.setGhichu(rs.getString("GhiChu"));
+                res.setMaHopDong(rs.getInt("MaHopDong"));
+                res.setMaNhanVien(0);
+                res.setMaphong(rs.getInt("maphong"));
+                res.setNgayDatPhong(rs.getDate("NgayDatPhong"));
+                res.setNgayTraPhong(rs.getDate("NgayTraPhong"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatTraPhongDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return res;
+    }
+    
 }

@@ -28,15 +28,15 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="tenKhachHangLabel" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="leftButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Component id="rightButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="loaiphongLabel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="tenKhachHangLabel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="ngaydatphongLabel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="ngaytraphongLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="ngayBatDauLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="ngayKetThucLabel" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -50,11 +50,11 @@
               <Component id="loaiphongLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tenKhachHangLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="68" max="32767" attributes="0"/>
-              <Component id="ngaydatphongLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="ngayBatDauLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="ngaytraphongLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="ngayKetThucLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="leftButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rightButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -87,31 +87,28 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rightButtonMouseClicked"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JLabel" name="tenKhachHangLabel">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="   "/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="loaiphongLabel">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="tenKhachHangLabel">
+    <Component class="javax.swing.JLabel" name="ngayBatDauLabel">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="  "/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tenKhachHangLabel.setVisible(false);"/>
-      </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="ngaydatphongLabel">
+    <Component class="javax.swing.JLabel" name="ngayKetThucLabel">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="ngaydatphongLabel.setVisible(false);"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="ngaytraphongLabel">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="  "/>
       </Properties>
     </Component>
   </SubComponents>

@@ -3,19 +3,12 @@ package hotelmanagement.DTO;
 public class PhongDTO {
     private int maPhong;
     private int soPhong;
-    private String CCCD;
     private int soTang;
     private int trangThai;
     private int maLoaiPhong;
     
     public int getMaPhong() {
         return maPhong;
-    }
-    public String getCCCD() {
-        return CCCD;
-    }
-    public void setCCCD(String cCCD) {
-        CCCD = cCCD;
     }
     public void setMaPhong(int maPhong) {
         this.maPhong = maPhong;

@@ -1,5 +1,7 @@
 package hotelmanagement.DAL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import hotelmanagement.DTO.KhachHangDTO;
 import java.util.ArrayList;
 
@@ -59,4 +61,19 @@ public class KhachHangDAL {
         return 1;
     }
     
+    public KhachHangDTO loadDataFromCCCD(String CCCD) {
+        KhachHangDTO res = new KhachHangDTO();
+        ResultSet rs = DAL.getInstance().executeQueryToGetData("SELECT * FROM KhachHang WHERE CCCD=" + CCCD);
+        try {
+            while (rs.next()) {
+                res.setCCCD(rs.getString("CCCD"));
+                res.setSoDienThoai(rs.getString("SoDienThoai"));
+                res.setTenKhachHang(rs.getString("TenKhachHang"));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return res;
+    }
 }
