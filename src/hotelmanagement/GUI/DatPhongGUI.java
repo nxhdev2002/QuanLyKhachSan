@@ -379,6 +379,7 @@ public class DatPhongGUI extends javax.swing.JFrame {
                     "Thông báo đặt phòng",
                     JOptionPane.INFORMATION_MESSAGE);
             DanhSachPhongGUI.getInstance().loadData();
+            this.setVisible(false);
         } else {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame,
