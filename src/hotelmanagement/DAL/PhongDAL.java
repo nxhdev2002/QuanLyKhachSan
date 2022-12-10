@@ -37,6 +37,7 @@ public class PhongDAL {
                 phong.setMaPhong(rs.getInt("maphong"));
                 phong.setSoPhong(rs.getInt("sophong"));
                 phong.setTrangThai(rs.getInt("trangthai"));
+                phong.setSoTang(rs.getInt("soTang"));
                 phong.setMaLoaiPhong(rs.getInt("maloaiphong"));
                 DSPhong.add(phong);
             }

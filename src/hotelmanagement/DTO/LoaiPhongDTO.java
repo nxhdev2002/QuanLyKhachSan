@@ -1,11 +1,11 @@
 package hotelmanagement.DTO;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
 
 public class LoaiPhongDTO {
     private int maLoaiPhong;
     private String tenLoaiPhong;
-    private DecimalFormat donGia;
+    private BigDecimal donGia;
 
     public int getMaLoaiPhong() {
         return maLoaiPhong;
@@ -19,10 +19,10 @@ public class LoaiPhongDTO {
     public void setTenLoaiPhong(String tenLoaiPhong) {
         this.tenLoaiPhong = tenLoaiPhong;
     }
-    public DecimalFormat getDonGia() {
+    public BigDecimal getDonGia() {
         return donGia;
     }
-    public void setDonGia(DecimalFormat donGia) {
+    public void setDonGia(BigDecimal donGia) {
         this.donGia = donGia;
     }
     

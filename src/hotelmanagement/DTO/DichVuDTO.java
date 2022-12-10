@@ -5,11 +5,28 @@ import java.math.BigDecimal;
 public class DichVuDTO {
     private int maDichVu;
     private String tenDichVu;
-    private BigDecimal Tien;
-    private int soLuong;
-    private BigDecimal thanhTien;
-    private String ghiChu;
+    private BigDecimal DonGia;
+    private String LoaiDichVu;
+    private String thumbnail;
     
+    public String getThumbnail() {
+        return thumbnail;
+    }
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+    public BigDecimal getDonGia() {
+        return DonGia;
+    }
+    public void setDonGia(BigDecimal donGia) {
+        DonGia = donGia;
+    }
+    public String getLoaiDichVu() {
+        return LoaiDichVu;
+    }
+    public void setLoaiDichVu(String loaiDichVu) {
+        LoaiDichVu = loaiDichVu;
+    }
     public int getMaDichVu() {
         return maDichVu;
     }
@@ -21,30 +38,6 @@ public class DichVuDTO {
     }
     public void setTenDichVu(String tenDichVu) {
         this.tenDichVu = tenDichVu;
-    }
-    public BigDecimal getTien() {
-        return Tien;
-    }
-    public void setTien(BigDecimal bigDecimal) {
-        Tien = bigDecimal;
-    }
-    public int getSoLuong() {
-        return soLuong;
-    }
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-    public BigDecimal getThanhTien() {
-        return thanhTien;
-    }
-    public void setThanhTien(BigDecimal bigDecimal) {
-        this.thanhTien = bigDecimal;
-    }
-    public String getGhiChu() {
-        return ghiChu;
-    }
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
     }
     
 }

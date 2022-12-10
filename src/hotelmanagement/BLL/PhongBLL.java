@@ -33,7 +33,7 @@ public class PhongBLL {
     } 
 
     public ArrayList<PhongDTO> loadDataByTang(int Tang) {
-        ArrayList<PhongDTO> rs = new ArrayList<PhongDTO>();
+        ArrayList<PhongDTO> rs = new ArrayList<>();
         for (int i = 0; i < this.DSPhong.size(); i++) {
             if (this.DSPhong.get(i).getSoTang() == Tang) {
                 rs.add(this.DSPhong.get(i));

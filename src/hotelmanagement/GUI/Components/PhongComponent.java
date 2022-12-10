@@ -6,9 +6,11 @@ package hotelmanagement.GUI.Components;
 
 import hotelmanagement.BLL.DatPhongBLL;
 import hotelmanagement.BLL.KhachHangBLL;
+import hotelmanagement.BLL.PhongBLL;
 import hotelmanagement.DTO.DatTraPhongDTO;
 import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
+import hotelmanagement.GUI.CheckOutGUI;
 import hotelmanagement.GUI.ChinhSuaPhongGUI;
 import hotelmanagement.GUI.DatPhongGUI;
 import java.awt.Color;
@@ -24,6 +26,8 @@ public class PhongComponent extends javax.swing.JPanel {
     private DatPhongGUI datphongGUI;
     private ChinhSuaPhongGUI ChinhSuaPhongGUI;
     private DatTraPhongDTO donDatPhong;
+    private KhachHangDTO Khach;
+    private CheckOutGUI Checkout;
     /**
      * Creates new form PhongComponent
      */
@@ -51,14 +55,14 @@ public class PhongComponent extends javax.swing.JPanel {
                 break;
             case 0:
                 this.setBackground(new Color(241,196,15));
-                this.leftButton.setText("Checkin");
+                this.leftButton.setText("Dọn dẹp");
                 this.rightButton.setText("Đặt phòng");
                 break;
             default:
                 this.setBackground(new Color(204,0,0));
                 this.leftButton.setText("Checkout");
                 this.rightButton.setText("Chỉnh sửa");
-                KhachHangDTO Khach = KhachHangBLL.getInstance().getDataFromCCCD(this.donDatPhong.getCCCD());
+                this.Khach = KhachHangBLL.getInstance().getDataFromCCCD(this.donDatPhong.getCCCD());
                 this.tenKhachHangLabel.setText(Khach.getTenKhachHang()); 
                 DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 this.ngayBatDauLabel.setText(df.format(this.donDatPhong.getNgayDatPhong()));
@@ -97,6 +101,11 @@ public class PhongComponent extends javax.swing.JPanel {
         phongLabel.setText("Phong");
 
         leftButton.setText("jButton1");
+        leftButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                leftButtonMouseClicked(evt);
+            }
+        });
         leftButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 leftButtonActionPerformed(evt);
@@ -175,7 +184,7 @@ public class PhongComponent extends javax.swing.JPanel {
             }
         } else if (this.Phong.getTrangThai() == 1){
             if (this.ChinhSuaPhongGUI == null) {
-                this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong);
+                this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong, this.Khach, this.donDatPhong);
                 this.ChinhSuaPhongGUI.setVisible(true);
             } else {
                 this.ChinhSuaPhongGUI.setVisible(true);
@@ -185,6 +194,16 @@ public class PhongComponent extends javax.swing.JPanel {
         }
         
 //GEN-LAST:event_rightButtonMouseClicked
+
+    private void leftButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftButtonMouseClicked
+        // TODO add your handling code here:
+        if (this.Phong.getTrangThai() == 0) {
+//            this.Phong.setTrangThai(1);
+        } else if (this.Phong.getTrangThai() == 1){
+            this.Checkout = new CheckOutGUI();
+            this.Checkout.setVisible(true);
+        }
+    }//GEN-LAST:event_leftButtonMouseClicked
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

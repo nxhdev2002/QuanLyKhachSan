@@ -49,6 +49,10 @@ public class KhachHangDAL {
         for (KhachHangDTO Khach: this.DSKhachHang) {
             if (Khach.getCCCD() == KhachHang.getCCCD()) {
                 isExist = true;
+                // String query = String.format(
+                //     "UPDATE KhachHang SET TenKhachHang = 'Alfred Schmidt', City = 'Frankfurt' WHERE CustomerID = 1;",
+                //     KhachHang.getTenKhachHang(), KhachHang.getSoDienThoai()
+                // )
             }
         }
         if (!isExist) {
@@ -61,6 +65,7 @@ public class KhachHangDAL {
         return 1;
     }
     
+
     public KhachHangDTO loadDataFromCCCD(String CCCD) {
         KhachHangDTO res = new KhachHangDTO();
         ResultSet rs = DAL.getInstance().executeQueryToGetData("SELECT * FROM KhachHang WHERE CCCD=" + CCCD);
