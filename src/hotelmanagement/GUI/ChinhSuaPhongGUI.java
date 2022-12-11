@@ -12,6 +12,7 @@ import hotelmanagement.DTO.DichVuDTO;
 import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.Components.DichVuComponent;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,12 +49,29 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
         //
         this.noteInput.setText(DatTra.getGhichu());
         this.tongtienLabel.setText(LoaiPhongBLL.getInstance().getGiaTien(this.Phong).toString());
-
-        for (DichVuDTO service: DichVuBLL.getInstance().getData()) {
+        
+        addServiceToPanel(DichVuBLL.getInstance().getData());
+        
+        // get Combobox data
+        this.dsDichVuBox.removeAllItems();
+        this.dsDichVuBox.addItem("Tất cả");
+        for (String item: DichVuBLL.getInstance().getListCategory())
+            this.dsDichVuBox.addItem(item);
+        
+    }
+    
+    public void addServiceToPanel(ArrayList<DichVuDTO> servs) {
+        // remove all components
+        int cpnCount = this.dichvuPanel.getComponentCount();
+        for (int i = 1; i < cpnCount; i++) {
+            this.dichvuPanel.remove(1);
+        }
+        this.dichvuPanel.updateUI();
+        // add new components
+        for (DichVuDTO service: servs) {
             this.dichvuPanel.add(new DichVuComponent(service));
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,14 +100,14 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         dichvuPanel = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        keywordInput = new javax.swing.JTextField();
+        dsDichVuBox = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         noteInput = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
@@ -246,8 +264,6 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
 
         jLabel12.setText("Dịch Vụ Cần Tìm");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jScrollPane2.setMaximumSize(null);
         jScrollPane2.setMinimumSize(null);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(319, 173));
@@ -255,7 +271,7 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
 
         dichvuPanel.setLayout(new java.awt.GridLayout(0, 1, 5, 5));
 
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
@@ -276,10 +292,31 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(dichvuPanel);
 
-        jTextField2.setText("jTextField2");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        keywordInput.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                keywordInputInputMethodTextChanged(evt);
+            }
+        });
+        keywordInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                keywordInputActionPerformed(evt);
+            }
+        });
+        keywordInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                keywordInputKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                keywordInputKeyReleased(evt);
+            }
+        });
+
+        dsDichVuBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        dsDichVuBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                dsDichVuBoxItemStateChanged(evt);
             }
         });
 
@@ -292,19 +329,19 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(dsDichVuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
+                                .addComponent(keywordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -315,14 +352,14 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dsDichVuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(keywordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -481,6 +518,11 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
         jLabel25.setText("Loại Phòng");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Đơn", "Phòng VIP", "Phòng Đôi" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel26.setText("Trạng Thái Phòng");
 
@@ -578,9 +620,35 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_doneButtonMouseClicked
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void keywordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keywordInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_keywordInputActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void keywordInputInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_keywordInputInputMethodTextChanged
+        
+    }//GEN-LAST:event_keywordInputInputMethodTextChanged
+
+    private void keywordInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keywordInputKeyPressed
+      
+    }//GEN-LAST:event_keywordInputKeyPressed
+
+    private void keywordInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keywordInputKeyReleased
+        // TODO add your handling code here:
+        String category = this.dsDichVuBox.getSelectedItem().toString();
+        String keyword = this.keywordInput.getText();
+        this.addServiceToPanel(DichVuBLL.getInstance().filterData(category, keyword));
+    }//GEN-LAST:event_keywordInputKeyReleased
+
+    private void dsDichVuBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dsDichVuBoxItemStateChanged
+        // TODO add your handling code here:
+        String category = evt.getItem().toString();
+        String keyword = this.keywordInput.getText();
+        this.addServiceToPanel(DichVuBLL.getInstance().filterData(category, keyword));
+    }//GEN-LAST:event_dsDichVuBoxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -624,9 +692,9 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
     private javax.swing.JTextField cccdInput;
     private javax.swing.JPanel dichvuPanel;
     private javax.swing.JButton doneButton;
+    private javax.swing.JComboBox<String> dsDichVuBox;
     private javax.swing.JButton editButton;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -663,12 +731,12 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField keywordInput;
     private javax.swing.JTextField noteInput;
     private javax.swing.JTextField sdtInput;
     private javax.swing.JLabel soTangLabel;
