@@ -6,7 +6,6 @@ public class DatDichVuDTO {
     private int maDonHang;
     private int maDichVu;
     private int maHopDong;
-    private BigDecimal DonGia;
     private int soLuong;
     private BigDecimal thanhTien;
     public int getMaDonHang() {
@@ -26,12 +25,6 @@ public class DatDichVuDTO {
     }
     public void setMaHopDong(int maHopDong) {
         this.maHopDong = maHopDong;
-    }
-    public BigDecimal getDonGia() {
-        return DonGia;
-    }
-    public void setDonGia(BigDecimal donGia) {
-        DonGia = donGia;
     }
     public int getSoLuong() {
         return soLuong;

@@ -10,6 +10,7 @@ public class DichVuBLL {
 
     public DichVuBLL() {
         DSDichVu = new ArrayList<>();
+        getData();
     }
 
     public static DichVuBLL getInstance() {
@@ -33,5 +34,16 @@ public class DichVuBLL {
         }
         return res;
     }
+
+    public DichVuDTO getDataById(int maDichVu) {
+        DichVuDTO res = new DichVuDTO();
+        for (DichVuDTO dv: this.DSDichVu) {
+            if (dv.getMaDichVu() == maDichVu) {
+                res = dv; 
+            }
+        }
+        return res;
+    }
+
 
 }

@@ -29,7 +29,6 @@ public class DatDichVuDAL {
             while (rs.next()) {
                 DatDichVuDTO DichVuDaDat = new DatDichVuDTO();
                 DichVuDaDat.setMaDonHang(rs.getInt("MaDonHang"));
-                DichVuDaDat.setDonGia(rs.getBigDecimal("DonGia"));
                 DichVuDaDat.setMaDichVu(rs.getInt("MaDichVu"));
                 DichVuDaDat.setMaHopDong(rs.getInt("MaHopDong"));
                 DichVuDaDat.setSoLuong(rs.getInt("SoLuong"));

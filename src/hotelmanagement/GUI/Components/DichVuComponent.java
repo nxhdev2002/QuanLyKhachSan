@@ -19,6 +19,9 @@ import java.text.DecimalFormat;
 public class DichVuComponent extends javax.swing.JPanel {
     private DichVuDTO DichVu;
     private ChinhSuaPhongGUI GUIParent;
+    
+    
+    private BigDecimal oldData;
     /**
      * Creates new form DichVuComponent
      */
@@ -43,6 +46,7 @@ public class DichVuComponent extends javax.swing.JPanel {
     }
 
     public void setNumData(int num) {
+        this.oldData = new BigDecimal(num);
         this.jSpinner1.setValue(Integer.valueOf(num));
     }
 
@@ -65,6 +69,7 @@ public class DichVuComponent extends javax.swing.JPanel {
         jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(100, 100));
         setMinimumSize(new java.awt.Dimension(100, 100));
@@ -108,6 +113,14 @@ public class DichVuComponent extends javax.swing.JPanel {
         });
         jPanel1.add(jButton3, new java.awt.GridBagConstraints());
 
+        jButton1.setText("Lưu");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton1, new java.awt.GridBagConstraints());
+
         add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -124,14 +137,22 @@ public class DichVuComponent extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (Integer.parseInt(this.jSpinner1.getValue().toString()) < 0) {
             this.jSpinner1.setValue(Integer.valueOf(0));
+            return;
         }
-        this.GUIParent.tongtienLabel.setText(this.GUIParent.TongTien.add(this.DichVu.getDonGia().multiply(BigDecimal.valueOf(this.getNumData()))).toString());
         
         
     }//GEN-LAST:event_jSpinner1StateChanged
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        this.jSpinner1.setEnabled(false);
+        
+        
+    }//GEN-LAST:event_jButton1MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel donGiaLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner jSpinner1;
