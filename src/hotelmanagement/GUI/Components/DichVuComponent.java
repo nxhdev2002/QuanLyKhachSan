@@ -6,7 +6,9 @@ package hotelmanagement.GUI.Components;
 
 import javax.swing.ImageIcon;
 
+import hotelmanagement.BLL.DatDichVuBLL;
 import hotelmanagement.DTO.DichVuDTO;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -22,14 +24,20 @@ public class DichVuComponent extends javax.swing.JPanel {
     }
 
     public DichVuComponent(DichVuDTO DichVu) {
+        this.DichVu = DichVu;
         initComponents();
         this.nameLabel.setText(DichVu.getTenDichVu());
-        this.donGiaLabel.setText(DichVu.getDonGia().toString() + " VNĐ");
+        DecimalFormat df = new DecimalFormat("#,###");
+        this.donGiaLabel.setText(df.format(DichVu.getDonGia()) + " VNĐ");
 
         ImageIcon iconLogo = new ImageIcon(getClass().getResource(DichVu.getThumbnail()));
         this.thumbnailLabel.setIcon(iconLogo);
-
     }
+
+    public void setNumData(int num) {
+        this.jSpinner1.setValue(Integer.valueOf(num));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,12 +50,18 @@ public class DichVuComponent extends javax.swing.JPanel {
         thumbnailLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         donGiaLabel = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
-        setMaximumSize(null);
+        setMaximumSize(new java.awt.Dimension(100, 100));
+        setMinimumSize(new java.awt.Dimension(100, 100));
         setName(""); // NOI18N
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(100, 100));
         setRequestFocusEnabled(false);
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         thumbnailLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/MonAn/suonxaochuangot.jpg"))); // NOI18N
         add(thumbnailLabel);
@@ -56,13 +70,40 @@ public class DichVuComponent extends javax.swing.JPanel {
         nameLabel.setMaximumSize(new java.awt.Dimension(25, 16));
         add(nameLabel);
 
+        donGiaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         donGiaLabel.setText("jLabel1");
         add(donGiaLabel);
+
+        jSpinner1.setEnabled(false);
+        add(jSpinner1);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jButton2.setText("Thêm");
+        jPanel1.add(jButton2, new java.awt.GridBagConstraints());
+
+        jButton3.setText("Sửa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new java.awt.GridBagConstraints());
+
+        add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel donGiaLabel;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel thumbnailLabel;
     // End of variables declaration//GEN-END:variables
