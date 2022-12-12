@@ -4,6 +4,7 @@ public class KhachHangDTO {
     private String tenKhachHang;
     private String CCCD;
     private String soDienThoai;
+    private int gioiTinh;
 
     public String getTenKhachHang() {
         return tenKhachHang;
@@ -22,6 +23,12 @@ public class KhachHangDTO {
     }
     public void setSoDienThoai(String soDienThoai) {
         this.soDienThoai = soDienThoai;
+    }
+    public int getGioiTinh() {
+        return gioiTinh;
+    }
+    public void setGioiTinh(int gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
     
 }

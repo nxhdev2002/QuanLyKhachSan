@@ -38,6 +38,16 @@ public class DatPhongBLL {
         KhachHang.setCCCD(cccd);
         KhachHang.setSoDienThoai(sdt);
         KhachHang.setTenKhachHang(hoten);
+        if (gioitinh == "Nam" ) {
+            KhachHang.setGioiTinh(1);
+        
+        } else {
+            KhachHang.setGioiTinh(0);
+        }
+            
+        
+            
+        
         dattra.setCCCD(cccd);
         dattra.setNgayDatPhong(beginDate);
         dattra.setNgayTraPhong(endDate);

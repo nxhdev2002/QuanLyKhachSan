@@ -197,10 +197,12 @@ public class PhongComponent extends javax.swing.JPanel {
 
     private void leftButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftButtonMouseClicked
         // TODO add your handling code here:
+
         if (this.Phong.getTrangThai() == 0) {
 //            this.Phong.setTrangThai(1);
         } else if (this.Phong.getTrangThai() == 1){
-            this.Checkout = new CheckOutGUI();
+        
+            this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
             this.Checkout.setVisible(true);
         }
     }//GEN-LAST:event_leftButtonMouseClicked

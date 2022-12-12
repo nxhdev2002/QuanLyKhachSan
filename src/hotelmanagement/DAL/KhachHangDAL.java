@@ -35,6 +35,7 @@ public class KhachHangDAL {
                 KhachHang.setTenKhachHang(rs.getString("tenkhachhang"));
                 KhachHang.setCCCD(rs.getString("CCCD"));
                 KhachHang.setSoDienThoai(rs.getString("sodienthoai"));
+                KhachHang.setGioiTinh(rs.getInt("GioiTinh"));
             
                 this.DSKhachHang.add(KhachHang);
             }
@@ -57,8 +58,8 @@ public class KhachHangDAL {
         }
         if (!isExist) {
             String query = String.format(
-                "INSERT INTO KhachHang(CCCD, TenKhachHang, SoDienThoai) VALUES ('%1$s', '%2$s', '%3$s')",
-                KhachHang.getCCCD(), KhachHang.getTenKhachHang(), KhachHang.getSoDienThoai()
+                "INSERT INTO KhachHang(CCCD, TenKhachHang, GioiTinh, SoDienThoai ) VALUES ('%1$s', '%2$s', '%3$s', %4$s)",
+                KhachHang.getCCCD(), KhachHang.getTenKhachHang(),KhachHang.getGioiTinh() ,KhachHang.getSoDienThoai()
             );
             return DAL.getInstance().executeQueryUpdate(query);
         }
