@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 
 import hotelmanagement.BLL.DatDichVuBLL;
 import hotelmanagement.DTO.DichVuDTO;
+import hotelmanagement.GUI.ChinhSuaPhongGUI;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
@@ -16,6 +18,7 @@ import java.text.DecimalFormat;
  */
 public class DichVuComponent extends javax.swing.JPanel {
     private DichVuDTO DichVu;
+    private ChinhSuaPhongGUI GUIParent;
     /**
      * Creates new form DichVuComponent
      */
@@ -23,8 +26,9 @@ public class DichVuComponent extends javax.swing.JPanel {
         initComponents();
     }
 
-    public DichVuComponent(DichVuDTO DichVu) {
+    public DichVuComponent(DichVuDTO DichVu, ChinhSuaPhongGUI GUIParent) {
         this.DichVu = DichVu;
+        this.GUIParent = GUIParent;
         initComponents();
         this.nameLabel.setText(DichVu.getTenDichVu());
         DecimalFormat df = new DecimalFormat("#,###");
@@ -34,8 +38,16 @@ public class DichVuComponent extends javax.swing.JPanel {
         this.thumbnailLabel.setIcon(iconLogo);
     }
 
+    public DichVuDTO getMainDTO() {
+        return this.DichVu;
+    }
+
     public void setNumData(int num) {
         this.jSpinner1.setValue(Integer.valueOf(num));
+    }
+
+    public int getNumData() {
+        return Integer.parseInt(this.jSpinner1.getValue().toString());
     }
 
     /**
@@ -52,7 +64,6 @@ public class DichVuComponent extends javax.swing.JPanel {
         donGiaLabel = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(100, 100));
@@ -75,14 +86,21 @@ public class DichVuComponent extends javax.swing.JPanel {
         add(donGiaLabel);
 
         jSpinner1.setEnabled(false);
+        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner1StateChanged(evt);
+            }
+        });
         add(jSpinner1);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jButton2.setText("Thêm");
-        jPanel1.add(jButton2, new java.awt.GridBagConstraints());
-
         jButton3.setText("Sửa");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -97,10 +115,23 @@ public class DichVuComponent extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        this.jSpinner1.setEnabled(true);
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        // TODO add your handling code here:
+        if (Integer.parseInt(this.jSpinner1.getValue().toString()) < 0) {
+            this.jSpinner1.setValue(Integer.valueOf(0));
+        }
+        this.GUIParent.tongtienLabel.setText(this.GUIParent.TongTien.add(this.DichVu.getDonGia().multiply(BigDecimal.valueOf(this.getNumData()))).toString());
+        
+        
+    }//GEN-LAST:event_jSpinner1StateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel donGiaLabel;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner jSpinner1;

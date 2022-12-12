@@ -26,8 +26,8 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
     private PhongDTO Phong;
     private KhachHangDTO KhachHang;
     private DatTraPhongDTO DatTra;
-    private ArrayList<DichVuDTO> DVList;
-    private BigDecimal TongTien = new BigDecimal(0);
+    private ArrayList<DichVuComponent> DVListComponents;
+    public BigDecimal TongTien = new BigDecimal(0);
     /**
      * Creates new form DichVuGUI
      */
@@ -59,10 +59,11 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
         this.TongTien = this.TongTien.add(TienPhong);
         
         // load services
-        DVList = new ArrayList<>();
-
+        DVListComponents = new ArrayList<>();
+        
     
-        DichVuBLL.getInstance().getData();
+        
+        addServiceToPanel(DichVuBLL.getInstance().getData());
         // get Combobox data
         this.dsDichVuBox.removeAllItems();
         this.dsDichVuBox.addItem("Tất cả");
@@ -76,18 +77,36 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
     public void addServiceToPanel(ArrayList<DichVuDTO> servs) {
         this.dichvuPanel.removeAll();
         this.dichvuPanel.updateUI();
+        
         // add new components
         for (DichVuDTO service: servs) {
-            DichVuComponent comp = new DichVuComponent(service);
+            DichVuComponent comp = new DichVuComponent(service, this);
             int numb = DatDichVuBLL.getInstance().getNumberByServiceId(this.DatTra, service.getMaDichVu());
             comp.setNumData(numb);
-            // + vao tien 
+            // // + vao tien 
             BigDecimal TienDichVu = service.getDonGia().multiply(BigDecimal.valueOf(numb));
             this.TongTien = this.TongTien.add(TienDichVu);
-            
-            
-            if (!DVList.contains(service)) DVList.add(service);
+                   
+            DVListComponents.add(comp);
             this.dichvuPanel.add(comp);
+        }
+    }
+
+    public void filterService(String category, String keyword) {
+        this.dichvuPanel.removeAll();
+        this.dichvuPanel.updateUI();
+        for (DichVuComponent serv: this.DVListComponents) {
+            if (category != "Tất cả") {
+                if (keyword.length() > 1) {
+                    if (serv.getMainDTO().getLoaiDichVu() == category && serv.getMainDTO().getTenDichVu().toLowerCase().contains(keyword)) 
+                    this.dichvuPanel.add(serv);
+                } else {
+                    if (serv.getMainDTO().getLoaiDichVu() == category) 
+                    this.dichvuPanel.add(serv);
+                }
+            } else {
+                if (serv.getMainDTO().getTenDichVu().toLowerCase().contains(keyword)) this.dichvuPanel.add(serv);
+            }
         }
     }
 
@@ -618,14 +637,14 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String category = this.dsDichVuBox.getSelectedItem().toString();
         String keyword = this.keywordInput.getText();
-        this.addServiceToPanel(DichVuBLL.getInstance().filterData(category, keyword));
+        this.filterService(category, keyword);
     }//GEN-LAST:event_keywordInputKeyReleased
 
     private void dsDichVuBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dsDichVuBoxItemStateChanged
         // TODO add your handling code here:
         String category = evt.getItem().toString();
         String keyword = this.keywordInput.getText();
-        this.addServiceToPanel(DichVuBLL.getInstance().filterData(category, keyword));
+        this.filterService(category, keyword);
     }//GEN-LAST:event_dsDichVuBoxItemStateChanged
 
     private void doneButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneButtonMouseClicked
@@ -729,6 +748,6 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
     private javax.swing.JLabel soTangLabel;
     private javax.swing.JLabel sophongLabel;
     private javax.swing.JTextField tenKhachHangInput;
-    private javax.swing.JLabel tongtienLabel;
+    public javax.swing.JLabel tongtienLabel;
     // End of variables declaration//GEN-END:variables
 }

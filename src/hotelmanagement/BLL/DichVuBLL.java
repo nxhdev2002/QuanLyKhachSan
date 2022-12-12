@@ -34,22 +34,4 @@ public class DichVuBLL {
         return res;
     }
 
-    public ArrayList<DichVuDTO> filterData(String Category, String keyword) {
-        ArrayList<DichVuDTO> res = new ArrayList<>();
-        for (DichVuDTO serv: this.DSDichVu) {
-            if (Category != "Tất cả") {
-                if (keyword.length() > 1) {
-                    if (serv.getLoaiDichVu() == Category && serv.getTenDichVu().toLowerCase().contains(keyword)) 
-                    res.add(serv);
-                } else {
-                    if (serv.getLoaiDichVu() == Category) 
-                    res.add(serv);
-                }
-            } else {
-                if (serv.getTenDichVu().toLowerCase().contains(keyword)) res.add(serv);
-            }
-        }
-        return res;
-    }
-
 }

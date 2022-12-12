@@ -54,10 +54,10 @@ public class DatPhongGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        gioitinhInput.add(jRadioButton1);
-        jRadioButton2 = new javax.swing.JRadioButton();
-        gioitinhInput.add(jRadioButton2);
+        maleInput = new javax.swing.JRadioButton();
+        gioitinhInput.add(maleInput);
+        femaleInput = new javax.swing.JRadioButton();
+        gioitinhInput.add(femaleInput);
         jLabel5 = new javax.swing.JLabel();
         cccdInput = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
@@ -99,16 +99,13 @@ public class DatPhongGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Giới Tính");
 
-        jRadioButton1.setText("Nam");
-       
-        
+        maleInput.setText("Nam");
+    
 
-        jRadioButton2.setText("Nữ");
-       
+        femaleInput.setText("Nữ");
 
         jLabel5.setText("Số CCCD");
 
-        
 
         jLabel7.setText("Ngày Bắt Đầu");
 
@@ -126,9 +123,7 @@ public class DatPhongGUI extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        
 
-        
 
         roomNumber.setText("19");
 
@@ -184,9 +179,9 @@ public class DatPhongGUI extends javax.swing.JFrame {
                                 .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
+                                        .addComponent(maleInput)
                                         .addGap(52, 52, 52)
-                                        .addComponent(jRadioButton2))
+                                        .addComponent(femaleInput))
                                     .addComponent(cccdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(hotenInput)
@@ -219,8 +214,8 @@ public class DatPhongGUI extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
+                            .addComponent(maleInput)
+                            .addComponent(femaleInput))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -256,6 +251,8 @@ public class DatPhongGUI extends javax.swing.JFrame {
         String hoten = this.hotenInput.getText();
         String sdt = this.sdtInput.getText();
         
+        this.maleInput.setActionCommand("1");
+        this.femaleInput.setActionCommand("0");
         String gioiTinh = this.gioitinhInput.getSelection().getActionCommand();
         String cccd = this.cccdInput.getText();
         Date beginDate = this.beginDateInput.getDate();
@@ -329,6 +326,7 @@ public class DatPhongGUI extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser beginDateInput;
     private javax.swing.JTextField cccdInput;
     private com.toedter.calendar.JDateChooser endDateInput;
+    private javax.swing.JRadioButton femaleInput;
     private javax.swing.ButtonGroup gioitinhInput;
     private javax.swing.JTextField hotenInput;
     private javax.swing.JButton jButton1;
@@ -343,12 +341,11 @@ public class DatPhongGUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JRadioButton maleInput;
     private javax.swing.JTextArea noteInput;
     private javax.swing.JLabel roomNumber;
     private javax.swing.JTextField sdtInput;

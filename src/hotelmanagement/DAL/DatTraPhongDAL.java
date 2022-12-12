@@ -65,7 +65,7 @@ public class DatTraPhongDAL {
     public DatTraPhongDTO getData(PhongDTO Phong) {
         DatTraPhongDTO res = new DatTraPhongDTO();
         try {
-            String query = "SELECT * FROM DatTraPhong WHERE maphong=" + Phong.getMaPhong();
+            String query = "SELECT * FROM DatTraPhong WHERE maphong=" + Phong.getMaPhong() + " AND DangHoatDong = 1";
             ResultSet rs = DAL.getInstance().executeQueryToGetData(query);
             while(rs.next()) {
                 res.setCCCD(rs.getString("CCCD"));

@@ -38,12 +38,7 @@ public class DatPhongBLL {
         KhachHang.setCCCD(cccd);
         KhachHang.setSoDienThoai(sdt);
         KhachHang.setTenKhachHang(hoten);
-        if (gioitinh == "Nam" ) {
-            KhachHang.setGioiTinh(1);
-        
-        } else {
-            KhachHang.setGioiTinh(0);
-        }
+        KhachHang.setGioiTinh(Integer.parseInt(gioitinh));
             
         
             
