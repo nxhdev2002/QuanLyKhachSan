@@ -65,5 +65,5 @@ public class PhongDAL {
         , status);
         return DAL.getInstance().executeQueryUpdate(query);
     }
-
+    
 } 

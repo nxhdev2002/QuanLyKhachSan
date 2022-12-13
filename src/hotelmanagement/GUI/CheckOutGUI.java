@@ -4,6 +4,7 @@
  */
 package hotelmanagement.GUI;
 
+import hotelmanagement.BLL.CheckOutBLL;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -157,6 +158,11 @@ public class CheckOutGUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(hoadonTable);
 
         jButton1.setText("Xuất hoá đơn");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -362,6 +368,13 @@ public class CheckOutGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        CheckOutBLL.getInstance().checkOut(Phong, DatTra);
+        DanhSachPhongGUI.getInstance().loadData();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:

@@ -57,8 +57,8 @@ public class DatTraPhongDAL {
         return DAL.getInstance().executeQueryUpdate(query);
     }
 
-    public int removeData(DatTraPhongDTO datTraPhong) {
-        String query = "DELETE FROM DatTraPhong WHERE MaHopDong=" + datTraPhong.getMaHopDong();
+    public int checkOut(DatTraPhongDTO DatTra) {
+        String query = "UPDATE DatTraPhong SET DangHoatDong=0 WHERE MaHopDong=" + DatTra.getMaHopDong();
         return DAL.getInstance().executeQueryUpdate(query);
     }
     

@@ -17,19 +17,11 @@ public class MainUI extends javax.swing.JFrame {
      */
     public MainUI() {
         initComponents();
-        this.doiPanel(DanhSachPhongGUI.getInstance());
         this.setLocationRelativeTo(null);
+        this.rightPanel.add(DanhSachPhongGUI.getInstance());
     }
     
-    
-    public void doiPanel(JPanel panel) {
-        System.out.print(panel);
-        rightPanel.removeAll();
-        rightPanel.add(panel);
-        rightPanel.repaint();
-        rightPanel.revalidate();
-    }
-    
+   
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +43,6 @@ public class MainUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         rightPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ Thống Quản Lý Khách Sạn");
@@ -155,8 +146,7 @@ public class MainUI extends javax.swing.JFrame {
         );
 
         rightPanel.setName(""); // NOI18N
-        rightPanel.setLayout(new java.awt.BorderLayout());
-        rightPanel.add(jLabel1, java.awt.BorderLayout.CENTER);
+        rightPanel.setLayout(new java.awt.GridLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,7 +168,6 @@ public class MainUI extends javax.swing.JFrame {
 
     private void roomsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomsLabelMouseClicked
         // TODO add your handling code here:
-        doiPanel(DanhSachPhongGUI.getInstance());
     }//GEN-LAST:event_roomsLabelMouseClicked
 
     private void bookingLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingLabelMouseClicked
@@ -222,7 +211,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel bookingLabel;
     private javax.swing.JLabel homeLabel;
     private javax.swing.JLabel infoLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
