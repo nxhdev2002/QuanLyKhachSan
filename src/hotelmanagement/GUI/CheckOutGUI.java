@@ -45,7 +45,7 @@ public class CheckOutGUI extends javax.swing.JFrame {
         this.SoPhong.setText(Integer.toString(Phong.getSoPhong()));
         this.hoten.setText(KhachHang.getTenKhachHang());
         this.sdt.setText(KhachHang.getSoDienThoai());
-        if ( KhachHang.getGioiTinh() == 1){
+        if ( KhachHang.getGioiTinh() == 1 ){
             this.GioiTinh.setText("Nam");
             
         }

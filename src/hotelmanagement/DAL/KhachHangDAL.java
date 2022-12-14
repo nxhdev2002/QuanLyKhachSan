@@ -75,6 +75,7 @@ public class KhachHangDAL {
                 res.setCCCD(rs.getString("CCCD"));
                 res.setSoDienThoai(rs.getString("SoDienThoai"));
                 res.setTenKhachHang(rs.getString("TenKhachHang"));
+                res.setGioiTinh(rs.getInt("GioiTinh"));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
