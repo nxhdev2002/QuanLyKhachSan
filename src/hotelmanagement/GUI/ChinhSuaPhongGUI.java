@@ -608,8 +608,18 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dsDichVuBoxItemStateChanged
 
     private void doneButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneButtonMouseClicked
-
-        this.setVisible(false);
+        ArrayList<DatDichVuDTO> ordersList = new ArrayList<>();
+        for (DichVuComponent cpn: this.DVListComponents) {
+            DichVuDTO DV = cpn.getMainDTO();
+            DatDichVuDTO order = new DatDichVuDTO();
+            order.setMaDichVu(DV.getMaDichVu());
+            order.setMaHopDong(this.DatTra.getMaHopDong());
+            order.setSoLuong(cpn.getNumData());
+            order.setThanhTien(DV.getDonGia().multiply(new BigDecimal(order.getSoLuong())));
+            ordersList.add(order);
+        }
+        DatDichVuBLL.getInstance().addDichVu(DatTra, ordersList);
+        this.dispose();
     }//GEN-LAST:event_doneButtonMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

@@ -100,12 +100,14 @@ public class DatPhongGUI extends javax.swing.JFrame {
         jLabel4.setText("Giới Tính");
 
         maleInput.setText("Nam");
-    
+        
 
         femaleInput.setText("Nữ");
+        
 
         jLabel5.setText("Số CCCD");
 
+        
 
         jLabel7.setText("Ngày Bắt Đầu");
 
@@ -123,7 +125,9 @@ public class DatPhongGUI extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+        
 
+        
 
         roomNumber.setText("19");
 
@@ -156,7 +160,7 @@ public class DatPhongGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(beginDateInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(beginDateInput, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                                     .addComponent(endDateInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)

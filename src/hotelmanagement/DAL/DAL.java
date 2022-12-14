@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DAL {
-    private static String DB_URL = "jdbc:mysql://containers-us-west-50.railway.app:5954/testqlks";
+    private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/testqlks";
     private static String USER_NAME = "root";
     private static String PASSWORD = "5EB7XYcF9KXbV1nO93b3";
 

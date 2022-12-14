@@ -54,4 +54,20 @@ public class DatDichVuDAL {
         }
         return res;
     }
+
+    public int addDichVu(DatTraPhongDTO DatTraPhong, DatDichVuDTO DV) {
+        String query = String.format(
+            "INSERT INTO DatDichVu(MaDichVu, MaHopDong, SoLuong, ThanhTien) values (%1$s, %2$s, %3$s, %4$s)",
+            DV.getMaDichVu(), DatTraPhong.getMaHopDong(), DV.getSoLuong(), DV.getThanhTien()
+        );
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+    public int updateDichVu(DatTraPhongDTO DatTraPhong, DatDichVuDTO DV) {
+        String query = String.format(
+            "UPDATE DatDichVu SET SoLuong = %1$s AND ThanhTien = %2$s WHERE MaDichVu=%3$s AND MaHopDong=" + DatTraPhong.getMaHopDong(),
+            DV.getSoLuong(), DV.getThanhTien(), DV.getMaDichVu()
+        );
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
 }

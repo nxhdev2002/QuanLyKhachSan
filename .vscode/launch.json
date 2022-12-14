@@ -9,7 +9,7 @@
             "name": "Launch HotelManagement",
             "request": "launch",
             "mainClass": "hotelmanagement.HotelManagement",
-            "projectName": "QuanLyKhachSan_e703da89"
+            "projectName": "QuanLyKhachSan"
         }
     ]
 }

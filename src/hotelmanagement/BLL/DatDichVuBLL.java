@@ -54,4 +54,28 @@ public class DatDichVuBLL {
         return dtm;
     }
 
+    public int addDichVu(DatTraPhongDTO DatTra, ArrayList<DatDichVuDTO> danhSachDV) {
+        ArrayList<DatDichVuDTO> data = DatDichVuBLL.getInstance().loadData(DatTra);
+        int res = 1;
+        for (DatDichVuDTO serv: danhSachDV) {
+            Boolean isExist = false;
+
+            for (DatDichVuDTO dat: data) {
+                if (dat.getMaHopDong() == DatTra.getMaHopDong() && dat.getMaDichVu() == serv.getMaDichVu()) {
+                    isExist = true;
+                }
+            }
+
+            if (isExist) {
+                DatDichVuDAL.getInstance().updateDichVu(DatTra, serv);
+            } else {
+                if (serv.getSoLuong() > 0) {
+                    DatDichVuDAL.getInstance().addDichVu(DatTra, serv);
+                }
+            }
+
+        }
+        return res;
+    }
+
 }
