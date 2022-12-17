@@ -55,4 +55,9 @@ public class PhongBLL {
     public int changeRoomStatus(PhongDTO Phong, int RoomStatus) {
         return PhongDAL.getInstance().changeStatus(Phong, RoomStatus);
     }
+
+    public int addData(PhongDTO Phong) {
+        return PhongDAL.getInstance().addData(Phong); 
+
+    }
 }

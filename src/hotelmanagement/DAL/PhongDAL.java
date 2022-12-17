@@ -19,6 +19,8 @@ public class PhongDAL {
     private PhongDAL() {
     }
     
+    
+
     public static PhongDAL getInstance() {
         if (instance == null){
             instance = new PhongDAL();
