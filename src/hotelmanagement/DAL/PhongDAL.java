@@ -51,8 +51,8 @@ public class PhongDAL {
 
     public int addData(PhongDTO Phong) {
         String query = String.format(
-            "INSERT INTO phong(sophong, soTang, trangthai, maloaiphong) VALUES (%1$s, %2$s, %3$s, %4$s)",
-            phong.getSoPhong(), phong.getSoTang(), phong.getTrangThai(), phong.getMaLoaiPhong());
+            "INSERT INTO Phong(sophong, soTang, trangthai, maloaiphong) VALUES (%1$s, %2$s, %3$s, %4$s)",
+            Phong.getSoPhong(), Phong.getSoTang(), Phong.getTrangThai(), Phong.getMaLoaiPhong());
             return DAL.getInstance().executeQueryUpdate(query);
     }
 

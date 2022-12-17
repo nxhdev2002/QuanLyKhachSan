@@ -57,16 +57,14 @@ public class DichVuGUI extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Sườn Xào Chua Ngọt",  new Double(50000.0), "Mở bán"},
-                {"2", "Cơm Rang Dưa Bò",  new Double(25000.0), "Tạm Đóng"},
                 {"", "", null, null}
             },
             new String [] {
-                "STT", "Tên DV", "Đơn Giá", "Trạng Thái"
+                "STT", "Tên DV", "Danh Mục", "Đơn Giá"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {

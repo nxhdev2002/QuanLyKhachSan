@@ -58,6 +58,5 @@ public class PhongBLL {
 
     public int addData(PhongDTO Phong) {
         return PhongDAL.getInstance().addData(Phong); 
-
     }
 }
