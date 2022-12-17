@@ -91,7 +91,6 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         countUsingRoom = new javax.swing.JLabel();
         countCleaningRoom = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         phongPanel = new javax.swing.JPanel();
@@ -134,8 +133,6 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
 
         jButton1.setText("Thêm phòng");
 
-        jButton2.setText("Sửa phòng");
-
         jButton3.setText("Xoá phòng");
 
         javax.swing.GroupLayout chuthichPanelLayout = new javax.swing.GroupLayout(chuthichPanel);
@@ -168,11 +165,9 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
                 .addComponent(countCleaningRoom)
                 .addGap(225, 225, 225)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(jButton3)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(429, Short.MAX_VALUE))
         );
         chuthichPanelLayout.setVerticalGroup(
             chuthichPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +189,6 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(countCleaningRoom)
                         .addComponent(jButton1)
-                        .addComponent(jButton2)
                         .addComponent(jButton3)))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
@@ -252,7 +246,6 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
     private javax.swing.JLabel countEmptyRoom;
     private javax.swing.JLabel countUsingRoom;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

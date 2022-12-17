@@ -112,11 +112,9 @@
                       <Component id="countCleaningRoom" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="340" max="32767" attributes="0"/>
+                      <EmptySpace pref="429" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -141,7 +139,6 @@
                               <Component id="jLabel8" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="countCleaningRoom" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -226,11 +223,6 @@
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m ph&#xf2;ng"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="S&#x1eed;a ph&#xf2;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
