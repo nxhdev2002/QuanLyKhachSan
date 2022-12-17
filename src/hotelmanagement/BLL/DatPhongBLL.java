@@ -46,6 +46,7 @@ public class DatPhongBLL {
         dattra.setCCCD(cccd);
         dattra.setNgayDatPhong(beginDate);
         dattra.setNgayTraPhong(endDate);
+        dattra.setMaNhanVien(3);
         dattra.setGhichu(note);
         dattra.setMaphong(Phong.getMaPhong());
         PhongDAL.getInstance().changeStatus(Phong, 1);

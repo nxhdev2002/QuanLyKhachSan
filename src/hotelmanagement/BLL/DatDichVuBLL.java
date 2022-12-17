@@ -67,7 +67,11 @@ public class DatDichVuBLL {
             }
 
             if (isExist) {
-                DatDichVuDAL.getInstance().updateDichVu(DatTra, serv);
+                if (serv.getSoLuong() != 0) {
+                    DatDichVuDAL.getInstance().updateDichVu(DatTra, serv);
+                } else {
+                    DatDichVuDAL.getInstance().deledeDichVu(DatTra, serv);
+                }
             } else {
                 if (serv.getSoLuong() > 0) {
                     DatDichVuDAL.getInstance().addDichVu(DatTra, serv);

@@ -1,5 +1,7 @@
 package hotelmanagement;
+import java.awt.Desktop;
 import java.math.BigDecimal;
+import java.net.URI;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,5 +34,18 @@ public class utils {
     public static String bigDecimalFormatPrint(BigDecimal bd) {
         DecimalFormat df = new DecimalFormat("#,###");
         return df.format(bd);
+    }
+    
+    public static boolean openWebpage(URI uri) {
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 }

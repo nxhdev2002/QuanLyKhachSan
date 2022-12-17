@@ -13,6 +13,16 @@ public class KhachHangGUI extends javax.swing.JPanel {
     /**
      * Creates new form KhachHangGUI
      */
+    
+    private static KhachHangGUI instance;
+    
+    public static KhachHangGUI getInstance() {
+        if (instance == null) {
+            instance = new KhachHangGUI();
+        }
+        return instance;
+    }
+    
     public KhachHangGUI() {
         initComponents();
     }

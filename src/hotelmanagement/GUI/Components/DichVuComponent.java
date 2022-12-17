@@ -140,7 +140,6 @@ public class DichVuComponent extends javax.swing.JPanel {
             return;
         }
         
-        
     }//GEN-LAST:event_jSpinner1StateChanged
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked

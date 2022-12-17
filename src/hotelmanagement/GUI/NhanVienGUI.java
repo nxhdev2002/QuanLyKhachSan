@@ -13,6 +13,15 @@ public class NhanVienGUI extends javax.swing.JPanel {
     /**
      * Creates new form DichVuGUI
      */
+    private static NhanVienGUI instance;
+    
+    public static NhanVienGUI getInstance() {
+        if (instance == null) {
+            instance = new NhanVienGUI();
+        }
+        return instance;
+    }
+    
     public NhanVienGUI() {
         initComponents();
     }

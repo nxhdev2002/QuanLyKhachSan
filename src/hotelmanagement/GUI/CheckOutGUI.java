@@ -31,7 +31,7 @@ public class CheckOutGUI extends javax.swing.JFrame {
     private DatTraPhongDTO DatTra;
     private ArrayList<DichVuDTO> DVList;
     private BigDecimal TongTien = new BigDecimal(0);
-
+    private BigDecimal soNgayO;
     /**
      * Creates new form DatPhongGui
      */
@@ -62,7 +62,7 @@ public class CheckOutGUI extends javax.swing.JFrame {
         this.hoadonTable.setModel(DatDichVuBLL.getInstance().getTableData(DatTra));
         
 
-        BigDecimal soNgayO = new BigDecimal(utils.nDays_Between_Dates(this.NgayBatDau1.getText(), this.NgayKetThuc2.getText()));
+        soNgayO = new BigDecimal(utils.nDays_Between_Dates(this.NgayBatDau1.getText(), this.NgayKetThuc2.getText()));
         BigDecimal tongTienPhong = LoaiPhongBLL.getInstance().getGiaTien(Phong).multiply(soNgayO);
         this.tienPhongLabel.setText(utils.bigDecimalFormatPrint(tongTienPhong));
 
@@ -72,6 +72,7 @@ public class CheckOutGUI extends javax.swing.JFrame {
         this.tienDVLabel.setText(utils.bigDecimalFormatPrint(tongTienDV));
         this.TongTien = tongTienPhong.add(tongTienDV);
         this.tongTienLabel.setText(utils.bigDecimalFormatPrint(TongTien));
+
     }
 
     public CheckOutGUI() {
@@ -372,7 +373,7 @@ public class CheckOutGUI extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        CheckOutBLL.getInstance().checkOut(Phong, DatTra);
+        CheckOutBLL.getInstance().checkOut(Phong, DatTra, this.soNgayO);
         DanhSachPhongGUI.getInstance().loadData();
     }//GEN-LAST:event_jButton1MouseClicked
 
