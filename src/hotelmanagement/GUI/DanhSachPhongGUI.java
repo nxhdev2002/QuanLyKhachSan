@@ -132,6 +132,11 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         countCleaningRoom.setText("()");
 
         jButton1.setText("Thêm phòng");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Xoá phòng");
 
@@ -236,6 +241,12 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        ThemPhongGUI them = new ThemPhongGUI();
+        them.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

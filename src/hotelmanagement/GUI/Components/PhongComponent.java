@@ -179,51 +179,55 @@ public class PhongComponent extends javax.swing.JPanel {
 
     private void rightButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightButtonMouseClicked
         // TODO add your handling code here:
-        if (this.Phong.getTrangThai() == 0) {
-            if (this.datphongGUI == null) {
-                this.datphongGUI = new DatPhongGUI(this.Phong);
-                this.datphongGUI.setVisible(true);
-            } else {
-                this.datphongGUI.setVisible(true);
-            }
-        } else if (this.Phong.getTrangThai() == 1){
-            if (this.ChinhSuaPhongGUI == null) {
-                this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong, this.Khach, this.donDatPhong);
-                this.ChinhSuaPhongGUI.setVisible(true);
-            } else {
-                this.ChinhSuaPhongGUI.dispose();
-                this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong, this.Khach, this.donDatPhong);
-                this.ChinhSuaPhongGUI.setVisible(true);
-            }            
-                            
-        } else {
+        switch (this.Phong.getTrangThai()) {
+            case 0:
+                if (this.datphongGUI == null) {
+                    this.datphongGUI = new DatPhongGUI(this.Phong);
+                    this.datphongGUI.setVisible(true);
+                } else {
+                    this.datphongGUI.setVisible(true);
+                }   break;
+            case 1:
+                if (this.ChinhSuaPhongGUI == null) {
+                    this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong, this.Khach, this.donDatPhong);
+                    this.ChinhSuaPhongGUI.setVisible(true);
+                } else {
+                    this.ChinhSuaPhongGUI.dispose();
+                    this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong, this.Khach, this.donDatPhong);
+                    this.ChinhSuaPhongGUI.setVisible(true);
+                }   break;
+            default:
                 PhongBLL.getInstance().changeRoomStatus(Phong, 0);
                 DanhSachPhongGUI.getInstance().loadData();
-            }
+                break;
+        }
         }
         
 //GEN-LAST:event_rightButtonMouseClicked
 
     private void leftButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftButtonMouseClicked
         // TODO add your handling code here:
-
-        if (this.Phong.getTrangThai() == 0) {
-            System.out.println("Change status");
-            this.Phong.setTrangThai(-1);
-            PhongBLL.getInstance().changeRoomStatus(Phong, -1);
-            DanhSachPhongGUI.getInstance().loadData();
-        } else if (this.Phong.getTrangThai() == 1){
-            if (this.Checkout == null) {
-                this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
-                this.Checkout.setVisible(true);
-            } else {
-                this.Checkout.dispose();
-                this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
-                this.Checkout.setVisible(true);
-            }   
-        } else {
-            PhongBLL.getInstance().changeRoomStatus(Phong, 0);
-            DanhSachPhongGUI.getInstance().loadData();
+        switch (this.Phong.getTrangThai()) {
+            case 0 -> {
+                System.out.println("Change status");
+                this.Phong.setTrangThai(-1);
+                PhongBLL.getInstance().changeRoomStatus(Phong, -1);
+                DanhSachPhongGUI.getInstance().loadData();
+            }
+            case 1 -> {
+                if (this.Checkout == null) {
+                    this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
+                    this.Checkout.setVisible(true);
+                } else {
+                    this.Checkout.dispose();
+                    this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
+                    this.Checkout.setVisible(true);
+                }
+            }
+            default -> {
+                PhongBLL.getInstance().changeRoomStatus(Phong, 0);
+                DanhSachPhongGUI.getInstance().loadData();
+            }
         }
     }//GEN-LAST:event_leftButtonMouseClicked
  
