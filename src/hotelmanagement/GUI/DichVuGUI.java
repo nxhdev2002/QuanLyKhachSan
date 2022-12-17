@@ -13,6 +13,15 @@ public class DichVuGUI extends javax.swing.JPanel {
     /**
      * Creates new form DichVuGUI
      */
+    private static DichVuGUI instance;
+    
+    public static DichVuGUI getInstance() {
+        if (instance == null) {
+            instance = new DichVuGUI();
+        }
+        return instance;
+    }
+    
     public DichVuGUI() {
         initComponents();
     }

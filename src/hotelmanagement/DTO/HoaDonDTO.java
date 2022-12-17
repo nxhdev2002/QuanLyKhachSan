@@ -1,36 +1,34 @@
 package hotelmanagement.DTO;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Date;
 
 public class HoaDonDTO {
     private int maHoaDon;
-    private String tenNhanVien;
-    private String tenKhachHang;
+    private int maNhanVien;
+    private String CCCD;
     private int maPhong;
     private int soNgayThue;
-    private DecimalFormat donGia;
-    private DecimalFormat thanhTien;
-    private Date ngayThanhToan;
-    private String phuongThucThanhToan;
-
+    private BigDecimal ThanhTien;
+    private Date NgayThanhToan;
     public int getMaHoaDon() {
         return maHoaDon;
     }
     public void setMaHoaDon(int maHoaDon) {
         this.maHoaDon = maHoaDon;
     }
-    public String getTenNhanVien() {
-        return tenNhanVien;
+    public int getMaNhanVien() {
+        return maNhanVien;
     }
-    public void setTenNhanVien(String tenNhanVien) {
-        this.tenNhanVien = tenNhanVien;
+    public void setMaNhanVien(int maNhanVien) {
+        this.maNhanVien = maNhanVien;
     }
-    public String getTenKhachHang() {
-        return tenKhachHang;
+    public String getCCCD() {
+        return CCCD;
     }
-    public void setTenKhachHang(String tenKhachHang) {
-        this.tenKhachHang = tenKhachHang;
+    public void setCCCD(String cCCD) {
+        CCCD = cCCD;
     }
     public int getMaPhong() {
         return maPhong;
@@ -44,31 +42,18 @@ public class HoaDonDTO {
     public void setSoNgayThue(int soNgayThue) {
         this.soNgayThue = soNgayThue;
     }
-    public DecimalFormat getDonGia() {
-        return donGia;
+    public BigDecimal getThanhTien() {
+        return ThanhTien;
     }
-    public void setDonGia(DecimalFormat donGia) {
-        this.donGia = donGia;
-    }
-    public DecimalFormat getThanhTien() {
-        return thanhTien;
-    }
-    public void setThanhTien(DecimalFormat thanhTien) {
-        this.thanhTien = thanhTien;
+    public void setThanhTien(BigDecimal bigDecimal) {
+        ThanhTien = bigDecimal;
     }
     public Date getNgayThanhToan() {
-        return ngayThanhToan;
+        return NgayThanhToan;
     }
     public void setNgayThanhToan(Date ngayThanhToan) {
-        this.ngayThanhToan = ngayThanhToan;
+        NgayThanhToan = ngayThanhToan;
     }
-    public String getPhuongThucThanhToan() {
-        return phuongThucThanhToan;
-    }
-    public void setPhuongThucThanhToan(String phuongThucThanhToan) {
-        this.phuongThucThanhToan = phuongThucThanhToan;
-    }
-
     
     
 }

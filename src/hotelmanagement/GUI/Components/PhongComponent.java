@@ -12,6 +12,7 @@ import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.CheckOutGUI;
 import hotelmanagement.GUI.ChinhSuaPhongGUI;
+import hotelmanagement.GUI.DanhSachPhongGUI;
 import hotelmanagement.GUI.DatPhongGUI;
 import java.awt.Color;
 import java.text.DateFormat;
@@ -50,6 +51,7 @@ public class PhongComponent extends javax.swing.JPanel {
         switch (this.Phong.getTrangThai()) {
             case -1:
                 this.setBackground(new Color(255,153,153));
+                this.tenKhachHangLabel.setText("Đang dọn dẹp phòng ...");
                 this.leftButton.setText("Hoàn thành");
                 this.rightButton.setText("Huỷ");
                 break;
@@ -95,7 +97,9 @@ public class PhongComponent extends javax.swing.JPanel {
         ngayKetThucLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 153, 255));
-        setMaximumSize(new java.awt.Dimension(100, 100));
+        setMaximumSize(new java.awt.Dimension(250, 250));
+        setMinimumSize(new java.awt.Dimension(250, 250));
+        setPreferredSize(new java.awt.Dimension(250, 250));
 
         phongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         phongLabel.setText("Phong");
@@ -142,7 +146,7 @@ public class PhongComponent extends javax.swing.JPanel {
                     .addComponent(tenKhachHangLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(leftButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rightButton))
                     .addComponent(loaiphongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ngayBatDauLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,7 +165,7 @@ public class PhongComponent extends javax.swing.JPanel {
                 .addComponent(ngayBatDauLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ngayKetThucLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(leftButton)
                     .addComponent(rightButton))
@@ -187,9 +191,14 @@ public class PhongComponent extends javax.swing.JPanel {
                 this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong, this.Khach, this.donDatPhong);
                 this.ChinhSuaPhongGUI.setVisible(true);
             } else {
+                this.ChinhSuaPhongGUI.dispose();
+                this.ChinhSuaPhongGUI = new ChinhSuaPhongGUI(this.Phong, this.Khach, this.donDatPhong);
                 this.ChinhSuaPhongGUI.setVisible(true);
             }            
                             
+        } else {
+                PhongBLL.getInstance().changeRoomStatus(Phong, 0);
+                DanhSachPhongGUI.getInstance().loadData();
             }
         }
         
@@ -199,11 +208,22 @@ public class PhongComponent extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         if (this.Phong.getTrangThai() == 0) {
-//            this.Phong.setTrangThai(1);
+            System.out.println("Change status");
+            this.Phong.setTrangThai(-1);
+            PhongBLL.getInstance().changeRoomStatus(Phong, -1);
+            DanhSachPhongGUI.getInstance().loadData();
         } else if (this.Phong.getTrangThai() == 1){
-        
-            this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
-            this.Checkout.setVisible(true);
+            if (this.Checkout == null) {
+                this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
+                this.Checkout.setVisible(true);
+            } else {
+                this.Checkout.dispose();
+                this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
+                this.Checkout.setVisible(true);
+            }   
+        } else {
+            PhongBLL.getInstance().changeRoomStatus(Phong, 0);
+            DanhSachPhongGUI.getInstance().loadData();
         }
     }//GEN-LAST:event_leftButtonMouseClicked
  

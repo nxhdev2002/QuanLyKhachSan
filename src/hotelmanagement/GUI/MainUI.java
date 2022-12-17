@@ -3,7 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package hotelmanagement.GUI;
+import hotelmanagement.utils;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -16,8 +23,13 @@ public class MainUI extends javax.swing.JFrame {
      * Creates new form MainUI
      */
     public MainUI() {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setUndecorated(true);
+        this.pack();
         initComponents();
         this.setLocationRelativeTo(null);
+        this.rightPanel.removeAll();
+        this.rightPanel.updateUI();
         this.rightPanel.add(DanhSachPhongGUI.getInstance());
     }
     
@@ -34,145 +46,257 @@ public class MainUI extends javax.swing.JFrame {
 
         leftPanel = new javax.swing.JPanel();
         homeLabel = new javax.swing.JLabel();
-        bookingLabel = new javax.swing.JLabel();
-        roomsLabel = new javax.swing.JLabel();
-        usersLabel = new javax.swing.JLabel();
-        statisticLabel = new javax.swing.JLabel();
-        infoLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ Thống Quản Lý Khách Sạn");
         setBackground(new java.awt.Color(255, 51, 0));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(1660, 900));
 
-        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+        leftPanel.setBackground(new java.awt.Color(39, 174, 96));
 
         homeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         homeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/32/home.png"))); // NOI18N
         homeLabel.setIconTextGap(0);
 
-        bookingLabel.setFont(new java.awt.Font("SVN-Poppins", 1, 12)); // NOI18N
-        bookingLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        bookingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/booking.png"))); // NOI18N
-        bookingLabel.setText("Đặt phòng");
-        bookingLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new java.awt.GridLayout(0, 1, 20, 20));
+
+        jLabel1.setBackground(new java.awt.Color(102, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/door.png"))); // NOI18N
+        jLabel1.setText("Sơ Đồ Khách Sạn");
+        jLabel1.setToolTipText("");
+        jLabel1.setOpaque(true);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bookingLabelMouseClicked(evt);
+                jLabel1MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel1);
 
-        roomsLabel.setFont(new java.awt.Font("SVN-Poppins", 1, 12)); // NOI18N
-        roomsLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        roomsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/door.png"))); // NOI18N
-        roomsLabel.setText("Sơ đồ khách sạn");
-        roomsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel5.setBackground(new java.awt.Color(102, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/employees.png"))); // NOI18N
+        jLabel5.setText("Nhân Viên");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                roomsLabelMouseClicked(evt);
+                jLabel5MouseClicked(evt);
             }
         });
+        jPanel1.add(jLabel5);
 
-        usersLabel.setFont(new java.awt.Font("SVN-Poppins", 1, 12)); // NOI18N
-        usersLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/employees.png"))); // NOI18N
-        usersLabel.setText("Nhân viên");
+        jLabel7.setBackground(new java.awt.Color(102, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/customer.png"))); // NOI18N
+        jLabel7.setText("Khách Hàng");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel7);
 
-        statisticLabel.setFont(new java.awt.Font("SVN-Poppins", 1, 12)); // NOI18N
-        statisticLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/statistic.png"))); // NOI18N
-        statisticLabel.setText("Thống kê");
+        jLabel6.setBackground(new java.awt.Color(102, 255, 255));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/services.png"))); // NOI18N
+        jLabel6.setText("Dịch Vụ");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel6);
 
-        infoLabel.setFont(new java.awt.Font("SVN-Poppins", 1, 12)); // NOI18N
-        infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        infoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/info.png"))); // NOI18N
-        infoLabel.setText("Giới thiệu");
+        jLabel2.setBackground(new java.awt.Color(102, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/statistic.png"))); // NOI18N
+        jLabel2.setText("Thống Kê");
+        jPanel1.add(jLabel2);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/customer.png"))); // NOI18N
-        jLabel2.setText("Khách hàng");
+        jLabel3.setBackground(new java.awt.Color(102, 255, 255));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/info.png"))); // NOI18N
+        jLabel3.setText("Giới Thiệu");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jLabel3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel3KeyPressed(evt);
+            }
+        });
+        jPanel1.add(jLabel3);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/services.png"))); // NOI18N
-        jLabel3.setText("Dịch vụ");
+        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 2, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Source Code on Github");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(homeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(homeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(statisticLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(infoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, leftPanelLayout.createSequentialGroup()
-                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(roomsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bookingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 6, Short.MAX_VALUE)))
-                .addGap(10, 10, 10))
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(homeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
-                .addComponent(roomsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(bookingLabel)
-                .addGap(32, 32, 32)
-                .addComponent(usersLabel)
-                .addGap(32, 32, 32)
-                .addComponent(statisticLabel)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(infoLabel)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4))
         );
 
+        rightPanel.setBackground(new java.awt.Color(26, 188, 156));
+        rightPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0)));
         rightPanel.setName(""); // NOI18N
-        rightPanel.setLayout(new java.awt.GridLayout());
+        rightPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 977, Short.MAX_VALUE))
+                .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void roomsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomsLabelMouseClicked
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_roomsLabelMouseClicked
+        this.rightPanel.removeAll();
+        this.rightPanel.updateUI();
+        
+        // set opaque for others components
+        this.jLabel1.setOpaque(false);
+        this.jLabel5.setOpaque(true);
+        this.jLabel7.setOpaque(false);
+        this.jLabel6.setOpaque(false);
+        this.jLabel2.setOpaque(false);
+        this.jLabel3.setOpaque(false);
+        this.leftPanel.updateUI();
+        
+        this.rightPanel.add(NhanVienGUI.getInstance());
+    }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void bookingLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingLabelMouseClicked
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_bookingLabelMouseClicked
+        this.rightPanel.removeAll();
+        this.rightPanel.updateUI();
+        
+        // set opaque for others components
+        this.jLabel1.setOpaque(true);
+        this.jLabel5.setOpaque(false);
+        this.jLabel7.setOpaque(false);
+        this.jLabel6.setOpaque(false);
+        this.jLabel2.setOpaque(false);
+        this.jLabel3.setOpaque(false);
+        this.leftPanel.updateUI();
+        
+        this.rightPanel.add(DanhSachPhongGUI.getInstance());
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        this.rightPanel.removeAll();
+        this.rightPanel.updateUI();
+        
+        // set opaque for others components
+        this.jLabel1.setOpaque(false);
+        this.jLabel5.setOpaque(false);
+        this.jLabel7.setOpaque(true);
+        this.jLabel6.setOpaque(false);
+        this.jLabel2.setOpaque(false);
+        this.jLabel3.setOpaque(false);
+        this.leftPanel.updateUI();
+        
+        this.rightPanel.add(KhachHangGUI.getInstance());
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        this.rightPanel.removeAll();
+        this.rightPanel.updateUI();
+        
+        // set opaque for others components
+        this.jLabel1.setOpaque(false);
+        this.jLabel5.setOpaque(false);
+        this.jLabel7.setOpaque(false);
+        this.jLabel6.setOpaque(true);
+        this.jLabel2.setOpaque(false);
+        this.jLabel3.setOpaque(false);
+        this.leftPanel.updateUI();
+        
+        this.rightPanel.add(DichVuGUI.getInstance());
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        try {
+            // TODO add your handling code here:
+            utils.openWebpage(new URL("https://github.com/nxhdev2002/QuanLyKhachSan").toURI());
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel3KeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel3KeyPressed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JOptionPane.showMessageDialog(frame,
+                    "All coded by Nguyen Xuan Hoang \n Designed by Hoang Minh Vu \n Database by Doan Tung Lam",
+                    "Thông tin ứng dụng",
+                    JOptionPane.INFORMATION_MESSAGE);
+            DanhSachPhongGUI.getInstance().loadData();
+    }//GEN-LAST:event_jLabel3MouseClicked
   
     /**
      * @param args the command line arguments
@@ -208,16 +332,17 @@ public class MainUI extends javax.swing.JFrame {
         });
     };
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bookingLabel;
     private javax.swing.JLabel homeLabel;
-    private javax.swing.JLabel infoLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel rightPanel;
-    private javax.swing.JLabel roomsLabel;
-    private javax.swing.JLabel statisticLabel;
-    private javax.swing.JLabel usersLabel;
     // End of variables declaration//GEN-END:variables
 }

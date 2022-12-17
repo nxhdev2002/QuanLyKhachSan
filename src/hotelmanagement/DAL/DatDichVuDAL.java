@@ -65,9 +65,17 @@ public class DatDichVuDAL {
 
     public int updateDichVu(DatTraPhongDTO DatTraPhong, DatDichVuDTO DV) {
         String query = String.format(
-            "UPDATE DatDichVu SET SoLuong = %1$s AND ThanhTien = %2$s WHERE MaDichVu=%3$s AND MaHopDong=" + DatTraPhong.getMaHopDong(),
+            "UPDATE DatDichVu SET SoLuong = %1$s, ThanhTien = %2$s WHERE MaDonHang > 0 AND MaDichVu=%3$s AND MaHopDong=" + DatTraPhong.getMaHopDong(),
             DV.getSoLuong(), DV.getThanhTien(), DV.getMaDichVu()
         );
         return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+    public int deledeDichVu(DatTraPhongDTO DatTraPhong, DatDichVuDTO DV) {
+        String query = String.format(
+            "DELETE FROM DatDichVu WHERE MaDonHang > 0 AND MaDichVu=%3$s AND MaHopDong=" + DatTraPhong.getMaHopDong(),
+            DV.getSoLuong(), DV.getThanhTien(), DV.getMaDichVu()
+        );
+        return DAL.getInstance().executeQueryUpdate(query); 
     }
 }

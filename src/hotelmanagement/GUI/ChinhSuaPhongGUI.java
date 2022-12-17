@@ -78,6 +78,10 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
         this.TongTien = this.TongTien.add(TienPhong);
     }
     
+    public void congTienDichVu() {
+        
+    }
+    
     public void addServiceToPanel(ArrayList<DichVuDTO> servs) {
         this.dichvuPanel.removeAll();
         this.dichvuPanel.updateUI();

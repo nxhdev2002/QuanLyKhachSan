@@ -51,4 +51,8 @@ public class PhongBLL {
         }
         return count;
     }
+    
+    public int changeRoomStatus(PhongDTO Phong, int RoomStatus) {
+        return PhongDAL.getInstance().changeStatus(Phong, RoomStatus);
+    }
 }
