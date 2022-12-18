@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 
 import hotelmanagement.BLL.PhongBLL;
 import hotelmanagement.DTO.PhongDTO;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -23,6 +25,7 @@ public class ThemPhongGUI extends javax.swing.JFrame {
      */
     public ThemPhongGUI() {
         initComponents();
+        this.jSpinner1.setValue(1);
     }
     private static ThemPhongGUI instance = null;
     
@@ -51,7 +54,7 @@ public class ThemPhongGUI extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -80,6 +83,12 @@ public class ThemPhongGUI extends javax.swing.JFrame {
         jLabel4.setText("Loại Phòng");
 
         LoaiPhongBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Đơn", "Phòng Đôi", "Phòng VIP" }));
+
+        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner1StateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -191,6 +200,21 @@ public class ThemPhongGUI extends javax.swing.JFrame {
             this.dispose();
 
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        // TODO add your handling code here:
+        Pattern pattern = Pattern.compile("^[1-9]*$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(this.jSpinner1.getValue().toString());
+        boolean matchFound = matcher.find();
+        if(!matchFound) {
+            this.jSpinner1.setValue(1);
+            JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame,
+                "Giá trị tầng chỉ được trong khoảng số nguyên",
+                "Lỗi",
+                JOptionPane.ERROR_MESSAGE);
+        } 
+    }//GEN-LAST:event_jSpinner1StateChanged
 
     /**
      * @param args the command line arguments

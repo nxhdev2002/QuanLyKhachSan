@@ -252,6 +252,7 @@
     <Component class="javax.swing.JTextField" name="cccdInput">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cccdInputActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cccdInputKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator3">
@@ -300,9 +301,13 @@
     <Component class="javax.swing.JTextField" name="hotenInput">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hotenInputActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="hotenInputKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="sdtInput">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="sdtInputKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="roomNumber">
       <Properties>

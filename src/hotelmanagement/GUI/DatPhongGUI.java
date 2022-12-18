@@ -4,13 +4,20 @@
  */
 package hotelmanagement.GUI;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import hotelmanagement.utils;
 import hotelmanagement.BLL.DatPhongBLL;
 import hotelmanagement.DTO.PhongDTO;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -100,14 +107,40 @@ public class DatPhongGUI extends javax.swing.JFrame {
         jLabel4.setText("Giới Tính");
 
         maleInput.setText("Nam");
-        
+        maleInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleInputActionPerformed(evt);
+            }
+
+            private void maleInputActionPerformed(ActionEvent evt) {
+            }
+        });
 
         femaleInput.setText("Nữ");
-        
+        femaleInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleInputActionPerformed(evt);
+            }
+
+            private void femaleInputActionPerformed(ActionEvent evt) {
+            }
+        });
 
         jLabel5.setText("Số CCCD");
 
-        
+        cccdInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cccdInputActionPerformed(evt);
+            }
+
+            private void cccdInputActionPerformed(ActionEvent evt) {
+            }
+        });
+        cccdInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cccdInputKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("Ngày Bắt Đầu");
 
@@ -125,9 +158,34 @@ public class DatPhongGUI extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
 
-        
+            private void jButton1ActionPerformed(ActionEvent evt) {
+            }
+        });
+
+        hotenInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hotenInputActionPerformed(evt);
+            }
+
+            private void hotenInputActionPerformed(ActionEvent evt) {
+            }
+        });
+        hotenInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hotenInputKeyTyped(evt);
+            }
+        });
+
+        sdtInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                sdtInputKeyTyped(evt);
+            }
+        });
 
         roomNumber.setText("19");
 
@@ -247,6 +305,45 @@ public class DatPhongGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void sdtInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sdtInputKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9') ||
+           (c == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();
+                evt.consume();
+        }
+    }//GEN-LAST:event_sdtInputKeyTyped
+
+    private void cccdInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cccdInputKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9') ||
+           (c == KeyEvent.VK_BACK_SPACE) ||
+           (c == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();
+                evt.consume();
+        }
+    }//GEN-LAST:event_cccdInputKeyTyped
+
+    private void hotenInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hotenInputKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        Pattern pattern = Pattern.compile("[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(String.valueOf(c));
+        boolean matchFound = matcher.find();
+        if (!matchFound) {
+            getToolkit().beep();
+            evt.consume();
+        }
+        // if (!((c >= 'a') && (c <= 'z')  ||
+        //    (c == KeyEvent.VK_BACK_SPACE) ||
+        //    (c == KeyEvent.VK_DELETE))) {
+        //         getToolkit().beep();
+        //         evt.consume();
+        // }
+    }//GEN-LAST:event_hotenInputKeyTyped
+
     
 
     
@@ -262,8 +359,45 @@ public class DatPhongGUI extends javax.swing.JFrame {
         Date beginDate = this.beginDateInput.getDate();
         Date endDate = this.endDateInput.getDate();
         String note = this.noteInput.getText();
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if (utils.compareDates(beginDate, endDate) != -1) { 
+            JOptionPane.showMessageDialog(frame,
+                    "Ngày đặt phòng phải trước ngày dự kiến kết thúc!",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+            DanhSachPhongGUI.getInstance().loadData();
+            return;
+        } 
+
+        if (utils.compareDates(beginDate, new Date()) == -1 || utils.compareDates(endDate, new Date()) != 1) {
+            JOptionPane.showMessageDialog(frame,
+                    "Ngày đặt phòng và ngày kết thúc phải lớn hơn hoặc bằng ngày hiện tại.",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+            DanhSachPhongGUI.getInstance().loadData();
+            return;
+        }
+
+        if (cccdInput.getText().length() != 9 && cccdInput.getText().length() != 12) {
+            JOptionPane.showMessageDialog(frame,
+                    "Số CCCD Không Hợp Lệ",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+            DanhSachPhongGUI.getInstance().loadData();
+            return;
+        }
+
+        if (sdtInput.getText().length() != 10) {
+            JOptionPane.showMessageDialog(frame,
+                    "Số điện thoại Không Hợp Lệ",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+            DanhSachPhongGUI.getInstance().loadData();
+            return;
+        }
+
         if (DatPhongBLL.getInstance().addData(hoten, sdt, gioiTinh, cccd, beginDate, endDate, note, this.Phong)) {
-            JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame,
                     "Đặt phòng thành công",
                     "Thông báo đặt phòng",
@@ -271,7 +405,6 @@ public class DatPhongGUI extends javax.swing.JFrame {
             DanhSachPhongGUI.getInstance().loadData();
             this.setVisible(false);
         } else {
-            JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame,
                     "Lỗi!",
                     "Đã xảy ra lỗi trong quá trình đặt phòng. Vui lòng thử lại",

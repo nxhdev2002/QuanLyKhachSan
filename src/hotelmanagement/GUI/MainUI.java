@@ -23,9 +23,9 @@ public class MainUI extends javax.swing.JFrame {
      * Creates new form MainUI
      */
     public MainUI() {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setUndecorated(true);
-        this.pack();
+        // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // this.setUndecorated(true);
+        // this.pack();
         initComponents();
         this.setLocationRelativeTo(null);
         this.rightPanel.removeAll();

@@ -48,4 +48,37 @@ public class utils {
         }
         return false;
     }
+
+    /**
+     * @param date1
+     * @param date2
+     * @return 1 if date 1 after date 2
+     * -1 if date 1 before date 2
+     * 0 if equal
+     */
+    public static int compareDates(Date date1,Date date2)
+    {
+        int res = 1;
+        // if you already have date objects then skip 1
+        //1
+
+        //1
+
+        //date object is having 3 methods namely after,before and equals for comparing
+        //after() will return true if and only if date1 is after date 2
+        if(date1.after(date2)){
+            res = 1;
+        }
+
+        //before() will return true if and only if date1 is before date2
+        if(date1.before(date2)){
+            res = -1;
+        }
+
+        //equals() returns true if both the dates are equal
+        if(date1.equals(date2)){
+            res = 0;
+        }
+    return res;
+    }
 }
