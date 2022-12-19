@@ -109,7 +109,7 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         jLabel2.setBackground(new java.awt.Color(241, 196, 15));
         jLabel2.setOpaque(true);
 
-        jLabel3.setBackground(new java.awt.Color(204, 0, 0));
+        jLabel3.setBackground(new java.awt.Color(153, 153, 255));
         jLabel3.setOpaque(true);
 
         jLabel4.setBackground(new java.awt.Color(255, 153, 153));

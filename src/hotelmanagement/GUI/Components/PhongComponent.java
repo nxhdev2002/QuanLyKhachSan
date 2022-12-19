@@ -61,7 +61,7 @@ public class PhongComponent extends javax.swing.JPanel {
                 this.rightButton.setText("Đặt phòng");
                 break;
             default:
-                this.setBackground(new Color(204,0,0));
+                this.setBackground(new Color(153,153,255));
                 this.leftButton.setText("Checkout");
                 this.rightButton.setText("Chỉnh sửa");
                 this.Khach = KhachHangBLL.getInstance().getDataFromCCCD(this.donDatPhong.getCCCD());
