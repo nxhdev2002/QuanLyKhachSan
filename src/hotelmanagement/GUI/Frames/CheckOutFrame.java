@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package hotelmanagement.GUI;
+package hotelmanagement.GUI.Frames;
 
 import hotelmanagement.BLL.CheckOutBLL;
 import java.math.BigDecimal;
@@ -19,12 +19,13 @@ import hotelmanagement.DTO.DatTraPhongDTO;
 import hotelmanagement.DTO.DichVuDTO;
 import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
+import hotelmanagement.GUI.DanhSachPhongGUI;
 import hotelmanagement.utils;
 /**
  *
  * @author nguyenxuanhoang
  */
-public class CheckOutGUI extends javax.swing.JFrame {
+public class CheckOutFrame extends javax.swing.JFrame {
 
     private PhongDTO Phong;
     private KhachHangDTO KhachHang;
@@ -35,7 +36,7 @@ public class CheckOutGUI extends javax.swing.JFrame {
     /**
      * Creates new form DatPhongGui
      */
-    public CheckOutGUI(PhongDTO Phong, KhachHangDTO KhachHang, DatTraPhongDTO DatTra) {
+    public CheckOutFrame(PhongDTO Phong, KhachHangDTO KhachHang, DatTraPhongDTO DatTra) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.Phong = Phong;
@@ -75,7 +76,7 @@ public class CheckOutGUI extends javax.swing.JFrame {
 
     }
 
-    public CheckOutGUI() {
+    public CheckOutFrame() {
 
         initComponents();
     }
@@ -402,25 +403,27 @@ public class CheckOutGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CheckOutGUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+            java.util.logging.Logger.getLogger(CheckOutFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CheckOutGUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+            java.util.logging.Logger.getLogger(CheckOutFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CheckOutGUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+            java.util.logging.Logger.getLogger(CheckOutFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CheckOutGUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+            java.util.logging.Logger.getLogger(CheckOutFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
+        // </editor-fold>
+        // </editor-fold>
         // </editor-fold>
         // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CheckOutGUI().setVisible(true);
+                new CheckOutFrame().setVisible(true);
             }
         });
     }

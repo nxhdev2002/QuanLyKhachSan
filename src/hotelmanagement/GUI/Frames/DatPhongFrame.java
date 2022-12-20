@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package hotelmanagement.GUI;
+package hotelmanagement.GUI.Frames;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import hotelmanagement.utils;
 import hotelmanagement.BLL.DatPhongBLL;
 import hotelmanagement.DTO.PhongDTO;
+import hotelmanagement.GUI.DanhSachPhongGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -23,19 +24,19 @@ import java.util.regex.Pattern;
  *
  * @author nguyenxuanhoang
  */
-public class DatPhongGUI extends javax.swing.JFrame {
+public class DatPhongFrame extends javax.swing.JFrame {
 
     private PhongDTO Phong;
 
     /**
      * Creates new form DatPhongGui
      */
-    public DatPhongGUI() {
+    public DatPhongFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
-    public DatPhongGUI(PhongDTO Phong) {
+    public DatPhongFrame(PhongDTO Phong) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.Phong = Phong;
@@ -111,18 +112,12 @@ public class DatPhongGUI extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maleInputActionPerformed(evt);
             }
-
-            private void maleInputActionPerformed(ActionEvent evt) {
-            }
         });
 
         femaleInput.setText("Nữ");
         femaleInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 femaleInputActionPerformed(evt);
-            }
-
-            private void femaleInputActionPerformed(ActionEvent evt) {
             }
         });
 
@@ -131,9 +126,6 @@ public class DatPhongGUI extends javax.swing.JFrame {
         cccdInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cccdInputActionPerformed(evt);
-            }
-
-            private void cccdInputActionPerformed(ActionEvent evt) {
             }
         });
         cccdInput.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -162,17 +154,11 @@ public class DatPhongGUI extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
-
-            private void jButton1ActionPerformed(ActionEvent evt) {
-            }
         });
 
         hotenInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hotenInputActionPerformed(evt);
-            }
-
-            private void hotenInputActionPerformed(ActionEvent evt) {
             }
         });
         hotenInput.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -344,9 +330,25 @@ public class DatPhongGUI extends javax.swing.JFrame {
         // }
     }//GEN-LAST:event_hotenInputKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
     
-
+    private void hotenInputActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
     
+    private void femaleInputActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
+    private void maleInputActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
+    private void cccdInputActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton1MouseClicked
         String hoten = this.hotenInput.getText();
@@ -434,18 +436,22 @@ public class DatPhongGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DatPhongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+            java.util.logging.Logger.getLogger(DatPhongFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DatPhongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+            java.util.logging.Logger.getLogger(DatPhongFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DatPhongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+            java.util.logging.Logger.getLogger(DatPhongFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DatPhongGUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+            java.util.logging.Logger.getLogger(DatPhongFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
         // </editor-fold>
         // </editor-fold>
         // </editor-fold>
@@ -454,7 +460,7 @@ public class DatPhongGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DatPhongGUI().setVisible(true);
+                new DatPhongFrame().setVisible(true);
             }
         });
     }

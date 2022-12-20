@@ -4,6 +4,7 @@
  */
 package hotelmanagement.GUI;
 
+import hotelmanagement.GUI.Frames.ThemPhongFrame;
 import hotelmanagement.BLL.PhongBLL;
 import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.Components.PhongComponent;
@@ -252,7 +253,7 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        ThemPhongGUI.getInstance().setVisible(true);
+        ThemPhongFrame.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked

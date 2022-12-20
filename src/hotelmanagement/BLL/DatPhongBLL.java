@@ -39,9 +39,6 @@ public class DatPhongBLL {
         KhachHang.setSoDienThoai(sdt);
         KhachHang.setTenKhachHang(hoten);
         KhachHang.setGioiTinh(Integer.parseInt(gioitinh));
-            
-        
-            
         
         dattra.setCCCD(cccd);
         dattra.setNgayDatPhong(beginDate);
@@ -58,6 +55,7 @@ public class DatPhongBLL {
     public DatTraPhongDTO getData(PhongDTO Phong) {
         return DatTraPhongDAL.getInstance().getData(Phong);
     }
+    
     
     
 }

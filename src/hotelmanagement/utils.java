@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -80,5 +81,9 @@ public class utils {
             res = 0;
         }
     return res;
+    }
+
+    public static String randomString() {
+        return UUID.randomUUID().toString();
     }
 }
