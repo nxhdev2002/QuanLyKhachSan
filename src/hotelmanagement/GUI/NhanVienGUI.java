@@ -4,6 +4,8 @@
  */
 package hotelmanagement.GUI;
 
+import hotelmanagement.BLL.NhanVienBLL;
+
 /**
  *
  * @author Haizz
@@ -12,18 +14,18 @@ public class NhanVienGUI extends javax.swing.JPanel {
 
     /**
      * Creates new form DichVuGUI
-     */
+     *
+    **/
+
     private static NhanVienGUI instance;
-    
+
     public static NhanVienGUI getInstance() {
-        if (instance == null) {
-            instance = new NhanVienGUI();
-        }
+        if (instance == null) instance = new NhanVienGUI();
         return instance;
     }
-    
     public NhanVienGUI() {
         initComponents();
+        this.jTable1.setModel(NhanVienBLL.getInstance().getTableNhanVien());
     }
 
     /**

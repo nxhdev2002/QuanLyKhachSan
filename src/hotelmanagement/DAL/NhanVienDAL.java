@@ -13,7 +13,6 @@ public class NhanVienDAL {
     
     private NhanVienDAL() {
         this.DSPhong = new ArrayList<NhanVienDTO>();
-        loadData();
     }
     
     public static NhanVienDAL getInstance() {
