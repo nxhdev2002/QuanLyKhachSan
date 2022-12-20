@@ -4,12 +4,16 @@
  */
 package hotelmanagement.GUI;
 
+import hotelmanagement.GUI.Frames.ThemPhongFrame;
 import hotelmanagement.BLL.PhongBLL;
 import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.Components.PhongComponent;
 
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -139,6 +143,11 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         });
 
         jButton3.setText("Xoá phòng");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout chuthichPanelLayout = new javax.swing.GroupLayout(chuthichPanel);
         chuthichPanel.setLayout(chuthichPanelLayout);
@@ -244,8 +253,50 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        ThemPhongGUI.getInstance().setVisible(true);
+        ThemPhongFrame.getInstance().setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        JFrame deleteRoomFrame = new JFrame();
+        deleteRoomFrame.setMinimumSize(new java.awt.Dimension(444, 165));
+        ArrayList<PhongDTO> data = PhongBLL.getInstance().loadData();
+        ArrayList<PhongDTO> filterData = new ArrayList<>();
+        for (PhongDTO phong: data) {
+            if (phong.getTrangThai() != 1) {
+                filterData.add(phong);
+            }
+        }
+
+        String[] rooms = new String[filterData.size()];
+        for (int i = 0; i<filterData.size(); i++) {
+            rooms[i] = Integer.toString(filterData.get(i).getSoPhong());
+        }
+
+        JComboBox<String> cb = new JComboBox<>(rooms);
+        JLabel lb = new JLabel("Chọn phòng cần xoá");
+        JButton submit = new JButton("Xoá");
+
+
+        cb.setBounds(85, 30, 280, 39);
+        lb.setBounds(111, 0, 250, 39);
+        submit.setBounds(85, 80, 80, 30);
+        
+        deleteRoomFrame.setLayout(null);
+        deleteRoomFrame.add(lb);
+        deleteRoomFrame.add(cb);
+        deleteRoomFrame.add(submit);
+        deleteRoomFrame.setVisible(true);
+        submit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PhongBLL.getInstance().removeData(filterData.get(cb.getSelectedIndex()));
+                DanhSachPhongGUI.getInstance().loadData();
+                deleteRoomFrame.dispose();
+            }
+        });
+
+        // deleteRoomFrame.add()
+    }//GEN-LAST:event_jButton3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

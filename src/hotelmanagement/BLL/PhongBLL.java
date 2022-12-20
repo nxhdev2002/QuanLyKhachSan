@@ -56,7 +56,24 @@ public class PhongBLL {
         return PhongDAL.getInstance().changeStatus(Phong, RoomStatus);
     }
 
-    public int addData(PhongDTO Phong) {
-        return PhongDAL.getInstance().addData(Phong); 
+    public int addData(int Tang, int maLoaiPhong) {
+        /// check xem có phòng nào inactive không
+        // nếu có thì active lại
+        PhongDTO room = PhongDAL.getInstance().getInactiveRoomByTang(Tang);
+        if (room == null) {
+            PhongDTO Phong = new PhongDTO();
+            ArrayList<PhongDTO> ds = this.loadDataByTang(Tang);
+            Phong.setTrangThai(0);
+            Phong.setSoTang(Tang);
+            Phong.setMaLoaiPhong(maLoaiPhong);
+            Phong.setSoPhong(ds.get(ds.size() - 1) .getSoPhong() + 1);
+            return PhongDAL.getInstance().addData(Phong); 
+        } else {
+            return PhongDAL.getInstance().activeRoom(room);
+        }
+    }
+
+    public int removeData(PhongDTO Phong) {
+        return PhongDAL.getInstance().removeData(Phong);
     }
 }

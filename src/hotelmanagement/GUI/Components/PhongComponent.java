@@ -10,10 +10,10 @@ import hotelmanagement.BLL.PhongBLL;
 import hotelmanagement.DTO.DatTraPhongDTO;
 import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
-import hotelmanagement.GUI.CheckOutGUI;
+import hotelmanagement.GUI.Frames.CheckOutFrame;
 import hotelmanagement.GUI.ChinhSuaPhongGUI;
 import hotelmanagement.GUI.DanhSachPhongGUI;
-import hotelmanagement.GUI.DatPhongGUI;
+import hotelmanagement.GUI.Frames.DatPhongFrame;
 import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,11 +24,11 @@ import java.text.SimpleDateFormat;
  */
 public class PhongComponent extends javax.swing.JPanel {
     private PhongDTO Phong;
-    private DatPhongGUI datphongGUI;
+    private DatPhongFrame datphongGUI;
     private ChinhSuaPhongGUI ChinhSuaPhongGUI;
     private DatTraPhongDTO donDatPhong;
     private KhachHangDTO Khach;
-    private CheckOutGUI Checkout;
+    private CheckOutFrame Checkout;
     /**
      * Creates new form PhongComponent
      */
@@ -182,7 +182,7 @@ public class PhongComponent extends javax.swing.JPanel {
         switch (this.Phong.getTrangThai()) {
             case 0:
                 if (this.datphongGUI == null) {
-                    this.datphongGUI = new DatPhongGUI(this.Phong);
+                    this.datphongGUI = new DatPhongFrame(this.Phong);
                     this.datphongGUI.setVisible(true);
                 } else {
                     this.datphongGUI.setVisible(true);
@@ -216,11 +216,11 @@ public class PhongComponent extends javax.swing.JPanel {
             }
             case 1 -> {
                 if (this.Checkout == null) {
-                    this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
+                    this.Checkout = new CheckOutFrame(this.Phong, this.Khach, this.donDatPhong);
                     this.Checkout.setVisible(true);
                 } else {
                     this.Checkout.dispose();
-                    this.Checkout = new CheckOutGUI(this.Phong, this.Khach, this.donDatPhong);
+                    this.Checkout = new CheckOutFrame(this.Phong, this.Khach, this.donDatPhong);
                     this.Checkout.setVisible(true);
                 }
             }

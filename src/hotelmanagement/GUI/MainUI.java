@@ -61,7 +61,6 @@ public class MainUI extends javax.swing.JFrame {
         setTitle("Hệ Thống Quản Lý Khách Sạn");
         setBackground(new java.awt.Color(255, 51, 0));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(1660, 900));
 
         leftPanel.setBackground(new java.awt.Color(39, 174, 96));
 
@@ -120,6 +119,11 @@ public class MainUI extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(102, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotelmanagement/Statics/Images/24/statistic.png"))); // NOI18N
         jLabel2.setText("Thống Kê");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel2);
 
         jLabel3.setBackground(new java.awt.Color(102, 255, 255));
@@ -189,7 +193,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE))
+                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +288,6 @@ public class MainUI extends javax.swing.JFrame {
 
     private void jLabel3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel3KeyPressed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_jLabel3KeyPressed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -297,6 +300,23 @@ public class MainUI extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
             DanhSachPhongGUI.getInstance().loadData();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        this.rightPanel.removeAll();
+        this.rightPanel.updateUI();
+        
+        // set opaque for others components
+        this.jLabel1.setOpaque(false);
+        this.jLabel5.setOpaque(false);
+        this.jLabel7.setOpaque(false);
+        this.jLabel6.setOpaque(false);
+        this.jLabel2.setOpaque(true);
+        this.jLabel3.setOpaque(false);
+        this.leftPanel.updateUI();
+        
+        this.rightPanel.add(ThongKeGUI.getInstance());
+    }//GEN-LAST:event_jLabel2MouseClicked
   
     /**
      * @param args the command line arguments

@@ -39,7 +39,21 @@ public class DichVuDAL {
         return this.DSDichVu;
     } 
 
-   
+    public int addData(DichVuDTO DichVu) {
+        String query = String.format(
+            "INSERT INTO DichVu(TenDichVu, DonGia, LoaiDichVu, Thumbnail) VALUES ('%1$s', %2$s, '%3$s', '%4$s')",
+            DichVu.getTenDichVu(), DichVu.getDonGia(), DichVu.getLoaiDichVu(), DichVu.getThumbnail()
+        );
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+    public int updateData(DichVuDTO DichVu) {
+        String query = String.format(
+            "UPDATE DichVu SET TenDichVu='%1$s', DonGia=%2$s, LoaiDichVu='%3$s', Thumbnail='%4$s' WHERE MaDichVu=" + DichVu.getMaDichVu(),
+            DichVu.getTenDichVu(), DichVu.getDonGia(), DichVu.getLoaiDichVu(), DichVu.getThumbnail()
+        );
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
 
     
 }
