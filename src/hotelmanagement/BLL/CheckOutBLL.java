@@ -33,7 +33,7 @@ public class CheckOutBLL {
         return instance;
     }
     
-    public void checkOut(PhongDTO Phong, DatTraPhongDTO DatTra, BigDecimal soNgayO) {
+    public void checkOut(PhongDTO Phong, DatTraPhongDTO DatTra, BigDecimal soNgayO, BigDecimal tongtien) {
         DatTraPhongDAL.getInstance().checkOut(DatTra);
         PhongDAL.getInstance().changeStatus(Phong, 0);
         HoaDonDTO HoaDon = new HoaDonDTO();
@@ -41,7 +41,7 @@ public class CheckOutBLL {
         HoaDon.setCCCD(DatTra.getCCCD());
         HoaDon.setMaPhong(Phong.getMaPhong());
         HoaDon.setSoNgayThue(Integer.valueOf(soNgayO.toString()));
-        HoaDon.setThanhTien(soNgayO.multiply(LoaiPhongBLL.getInstance().getGiaTien(Phong)));
+        HoaDon.setThanhTien(tongtien);
         HoaDon.setNgayThanhToan(new Date());
         HoaDonDAL.getInstance().addData(HoaDon);
     }

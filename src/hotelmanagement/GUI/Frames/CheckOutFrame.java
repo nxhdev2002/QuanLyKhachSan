@@ -374,7 +374,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        CheckOutBLL.getInstance().checkOut(Phong, DatTra, this.soNgayO);
+        CheckOutBLL.getInstance().checkOut(Phong, DatTra, this.soNgayO, this.TongTien);
         DanhSachPhongGUI.getInstance().loadData();
     }//GEN-LAST:event_jButton1MouseClicked
 
