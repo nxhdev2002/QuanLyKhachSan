@@ -9,10 +9,10 @@ import java.util.ArrayList;
  */
 public class NhanVienDAL {
     private static NhanVienDAL instance;
-    private ArrayList<NhanVienDTO> DSPhong;
+    private ArrayList<NhanVienDTO> DSNhanVien;
     
     private NhanVienDAL() {
-        this.DSPhong = new ArrayList<NhanVienDTO>();
+        this.DSNhanVien = new ArrayList<NhanVienDTO>();
     }
     
     public static NhanVienDAL getInstance() {
@@ -34,11 +34,11 @@ public class NhanVienDAL {
                 NhanVien.setSoDienThoai(rs.getString("sodienthoai"));
                 NhanVien.setNgaySinh(rs.getDate("ngaysinh"));
                 NhanVien.setDiaChi(rs.getString("diaChi"));
-                this.DSPhong.add(NhanVien);
+                this.DSNhanVien.add(NhanVien);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return this.DSPhong;
+        return this.DSNhanVien;
     } 
 }

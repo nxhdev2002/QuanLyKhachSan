@@ -76,4 +76,13 @@ public class PhongBLL {
     public int removeData(PhongDTO Phong) {
         return PhongDAL.getInstance().removeData(Phong);
     }
+
+    public PhongDTO getDataById(int MaPhong) {
+        for (PhongDTO room: this.DSPhong) {
+            if (room.getMaPhong() == (MaPhong)) {
+                return room;
+            }
+        }
+        return null;
+    }
 }

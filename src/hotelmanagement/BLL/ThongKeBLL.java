@@ -57,4 +57,7 @@ public class ThongKeBLL {
         return dtm;
     }
     
+    public HoaDonDTO getHoaDonById(int MaHoaDon) {
+        return HoaDonDAL.getInstance().getHoaDonById(MaHoaDon);
+    }
 }

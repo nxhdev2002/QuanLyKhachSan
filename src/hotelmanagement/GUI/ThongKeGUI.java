@@ -175,6 +175,11 @@ public class ThongKeGUI extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -244,6 +249,11 @@ public class ThongKeGUI extends javax.swing.JPanel {
         this.tongLabel.setText(utils.bigDecimalFormatPrint(tong));
         
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        // TODO add your handling code here:
+        utils.writeToExcell(jTable1, "ThongKe");
+    }//GEN-LAST:event_jButton2KeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

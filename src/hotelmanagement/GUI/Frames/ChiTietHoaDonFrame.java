@@ -4,6 +4,12 @@
  */
 package hotelmanagement.GUI.Frames;
 
+import java.text.SimpleDateFormat;
+
+import hotelmanagement.BLL.KhachHangBLL;
+import hotelmanagement.BLL.NhanVienBLL;
+import hotelmanagement.BLL.PhongBLL;
+import hotelmanagement.BLL.ThongKeBLL;
 import hotelmanagement.DTO.HoaDonDTO;
 
 /**
@@ -21,7 +27,15 @@ public class ChiTietHoaDonFrame extends javax.swing.JFrame {
     
     public ChiTietHoaDonFrame(int MaHoaDon) {
         initComponents();
-        this.title.setText("Hoá Đơn Số " + MaHoaDon);
+        this.title.setText("Hoá Đơn Số " + MaHoaDon);   
+        HoaDonDTO hd = ThongKeBLL.getInstance().getHoaDonById(MaHoaDon);
+        this.khachhang.setText(KhachHangBLL.getInstance().getDataFromCCCD(hd.getCCCD()).getTenKhachHang());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        this.ngaythanhtoan.setText(sdf.format(hd.getNgayThanhToan()));
+        this.songaythue.setText(Integer.toString(hd.getSoNgayThue()));
+        this.sophong.setText(Integer.toString(PhongBLL.getInstance().getDataById(hd.getMaPhong()).getSoPhong()));
+        this.thungan.setText(NhanVienBLL.getInstance().getDataById(hd.getMaNhanVien()).getTenNhanVien());
     }
 
     /**

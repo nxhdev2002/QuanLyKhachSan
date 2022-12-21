@@ -176,7 +176,7 @@ public class KhachHangGUI extends javax.swing.JPanel {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        utils.writeToExcell(jTable1, Paths.get(System.getProperty("user.dir") + "/Data/KhachHang"));
+        utils.writeToExcell(jTable1, "KhachHang");
     }//GEN-LAST:event_jButton2MouseClicked
 
 

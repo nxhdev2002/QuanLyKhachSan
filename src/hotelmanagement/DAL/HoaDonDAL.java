@@ -49,6 +49,27 @@ public class HoaDonDAL {
         return this.DSHoaDon;
     } 
 
+    public HoaDonDTO getHoaDonById(int MaHoaDon) {
+        String query = "SELECT * FROM HoaDon WHERE MaHoaDon=" + MaHoaDon;
+        try {
+            ResultSet rs = DAL.getInstance().executeQueryToGetData(query);
+            while (rs.next()) {
+                HoaDonDTO HoaDon = new HoaDonDTO();
+                HoaDon.setCCCD(rs.getString("CCCD"));
+                HoaDon.setMaHoaDon(rs.getInt("MaHoaDon"));
+                HoaDon.setMaNhanVien(rs.getInt("MaNhanVien"));
+                HoaDon.setMaPhong(rs.getInt("MaPhong"));
+                HoaDon.setNgayThanhToan(rs.getTimestamp("NgayThanhToan"));
+                HoaDon.setSoNgayThue(rs.getInt("SoNgayThue"));
+                HoaDon.setThanhTien(rs.getBigDecimal("ThanhTien"));
+                return HoaDon;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public int addData(HoaDonDTO HoaDon) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 

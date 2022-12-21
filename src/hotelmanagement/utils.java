@@ -101,7 +101,7 @@ public class utils {
         return UUID.randomUUID().toString();
     }
 
-    public static void writeToExcell(JTable table, Path path) {
+    public static void writeToExcell(JTable table, String name) {
             Workbook wb = new XSSFWorkbook();
             Sheet sheet = wb.createSheet(); //WorkSheet
             Row row = sheet.createRow(2); //Row created at line 3
@@ -122,7 +122,18 @@ public class utils {
                 row = sheet.createRow((rows + 3)); 
             }
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            File f = new File("Data/KhachHang/ThongTinKhachHang" + sdf.format(new Date()) + ".xlsx");
+            File f;
+            switch (name) {
+                case "KhachHang":
+                    f = new File("Data/KhachHang/ThongTinKhachHang_Ngay" + sdf.format(new Date()) + ".xlsx");
+                    break;
+                case "ThongKe":
+                    f = new File("Data/ThongKe/ThongKe_Ngay" + sdf.format(new Date()) + ".xlsx");
+                    break;
+                default:
+                    f = new File("Data/XuatExcel_Ngay" + sdf.format(new Date()) + ".xlsx");
+            }
+            
             try {
                 wb.write(new FileOutputStream(f));
             } catch (FileNotFoundException e) {
