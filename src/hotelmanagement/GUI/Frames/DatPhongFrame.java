@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 
 import hotelmanagement.utils;
 import hotelmanagement.BLL.DatPhongBLL;
+import hotelmanagement.BLL.KhachHangBLL;
+import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.DanhSachPhongGUI;
 
@@ -123,6 +125,11 @@ public class DatPhongFrame extends javax.swing.JFrame {
 
         jLabel5.setText("Số CCCD");
 
+        cccdInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cccdInputFocusLost(evt);
+            }
+        });
         cccdInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cccdInputActionPerformed(evt);
@@ -167,6 +174,11 @@ public class DatPhongFrame extends javax.swing.JFrame {
             }
         });
 
+        sdtInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                sdtInputFocusLost(evt);
+            }
+        });
         sdtInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 sdtInputKeyTyped(evt);
@@ -214,28 +226,28 @@ public class DatPhongFrame extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(80, 80, 80))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hotenInput)
+                            .addComponent(sdtInput))
+                        .addGap(85, 85, 85))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(maleInput)
-                                        .addGap(52, 52, 52)
-                                        .addComponent(femaleInput))
-                                    .addComponent(cccdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(maleInput)
+                                .addGap(48, 48, 48)
+                                .addComponent(femaleInput)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(hotenInput)
-                                .addGap(80, 80, 80)
-                                .addComponent(sdtInput)))
-                        .addContainerGap())))
+                                .addComponent(cccdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,30 +261,30 @@ public class DatPhongFrame extends javax.swing.JFrame {
                             .addComponent(roomNumber))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cccdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel4)
+                    .addComponent(maleInput)
+                    .addComponent(femaleInput))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hotenInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(hotenInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
                             .addComponent(sdtInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(maleInput)
-                            .addComponent(femaleInput))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(cccdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(jLabel7))
-                    .addComponent(beginDateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(beginDateInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
@@ -285,7 +297,7 @@ public class DatPhongFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -329,6 +341,40 @@ public class DatPhongFrame extends javax.swing.JFrame {
         //         evt.consume();
         // }
     }//GEN-LAST:event_hotenInputKeyTyped
+
+    private void sdtInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sdtInputFocusLost
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_sdtInputFocusLost
+
+    private void cccdInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cccdInputFocusLost
+        // TODO add your handling code here:
+        System.out.println("Lost foc");
+        String cccd = this.cccdInput.getText();
+        try {
+            KhachHangDTO khach = KhachHangBLL.getInstance().getDataFromCCCD(cccd);
+            if (khach.getTenKhachHang().length() > 5) {
+                this.hotenInput.setEditable(false);
+                this.sdtInput.setEditable(false);
+                this.hotenInput.setText(khach.getTenKhachHang());
+                this.sdtInput.setText(khach.getSoDienThoai());
+                if (khach.getGioiTinh() == 1) {
+                    this.femaleInput.setEnabled(false);
+                    this.maleInput.setSelected(true);
+                } else { 
+                    this.maleInput.setEnabled(false);
+                    this.femaleInput.setSelected(false);
+                }
+
+            }
+        } catch(Exception e) {
+            this.hotenInput.setEditable(true);
+            this.sdtInput.setEditable(true);
+            this.femaleInput.setEnabled(true);
+            this.maleInput.setEnabled(true);
+            System.out.println("customer not found");
+        }
+    }//GEN-LAST:event_cccdInputFocusLost
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         

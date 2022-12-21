@@ -314,7 +314,7 @@ public class MainUI extends javax.swing.JFrame {
         this.jLabel2.setOpaque(true);
         this.jLabel3.setOpaque(false);
         this.leftPanel.updateUI();
-        
+        ThongKeGUI.getInstance().loadData();
         this.rightPanel.add(ThongKeGUI.getInstance());
     }//GEN-LAST:event_jLabel2MouseClicked
   

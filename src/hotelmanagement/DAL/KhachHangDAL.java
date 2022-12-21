@@ -48,7 +48,7 @@ public class KhachHangDAL {
     public int saveCustomerData(KhachHangDTO KhachHang) {
         Boolean isExist = false;
         for (KhachHangDTO Khach: this.DSKhachHang) {
-            if (Khach.getCCCD() == KhachHang.getCCCD()) {
+            if (Khach.getCCCD().equals(KhachHang.getCCCD())) {
                 isExist = true;
                 // String query = String.format(
                 //     "UPDATE KhachHang SET TenKhachHang = 'Alfred Schmidt', City = 'Frankfurt' WHERE CustomerID = 1;",
@@ -82,5 +82,13 @@ public class KhachHangDAL {
             e.printStackTrace();
         }
         return res;
+    }
+    
+    public int updateData(KhachHangDTO KhachHang) {
+        String query = String.format(
+            "UPDATE KhachHang SET TenKhachHang='%1$s', GioiTinh=%2$s, SoDienThoai='%3$s' WHERE CCCD='" + KhachHang.getCCCD() + "'",
+            KhachHang.getTenKhachHang(), KhachHang.getGioiTinh(), KhachHang.getSoDienThoai()
+        );
+        return DAL.getInstance().executeQueryUpdate(query);
     }
 }

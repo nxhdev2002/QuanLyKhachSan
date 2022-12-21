@@ -119,6 +119,7 @@
             <Property name="text" type="java.lang.String" value="Xem"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
@@ -138,7 +139,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" pref="173" max="-2" attributes="0"/>
+                  <Component id="tongLabel" min="-2" pref="173" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -148,7 +149,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel4" pref="40" max="32767" attributes="0"/>
+                      <Component id="tongLabel" pref="40" max="32767" attributes="0"/>
                       <Component id="jLabel3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -166,7 +167,7 @@
             <Property name="text" type="java.lang.String" value="T&#x1ed5;ng:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="tongLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>

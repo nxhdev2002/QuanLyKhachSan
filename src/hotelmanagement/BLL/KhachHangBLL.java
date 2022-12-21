@@ -40,4 +40,9 @@ public class KhachHangBLL {
         }
         return dtm;
     }
+    public void updateData(ArrayList<KhachHangDTO> customers) {
+        for (KhachHangDTO cust: customers) {
+            KhachHangDAL.getInstance().updateData(cust);
+        }
+    }
 }

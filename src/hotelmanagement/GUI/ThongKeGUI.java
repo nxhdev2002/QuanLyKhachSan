@@ -4,6 +4,20 @@
  */
 package hotelmanagement.GUI;
 
+import hotelmanagement.BLL.ThongKeBLL;
+import hotelmanagement.GUI.Frames.ChiTietHoaDonFrame;
+import hotelmanagement.utils;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.JTable;
+
 /**
  *
  * @author Haizz
@@ -17,13 +31,40 @@ public class ThongKeGUI extends javax.swing.JPanel {
     
     public ThongKeGUI() {
         initComponents();
+        final JFrame frame = new JFrame();
+        final JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem deleteItem = new JMenuItem("Xem chi tiết");
+        deleteItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Component c = (Component)e.getSource();
+                JPopupMenu popup = (JPopupMenu)c.getParent();
+                JTable table = (JTable)popup.getInvoker();
+                ChiTietHoaDonFrame frm = new ChiTietHoaDonFrame(Integer.parseInt(table.getValueAt(table.getSelectedRow(), 1).toString()));
+                frm.setVisible(true);
+                frm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+        });
+        popupMenu.add(deleteItem);
+        this.jTable1.setComponentPopupMenu(popupMenu);
     }
     
     public static ThongKeGUI getInstance() {
         if (instance == null) instance = new ThongKeGUI();
         return instance;
     }
-    
+       
+    public void loadData() {
+        this.jTable1.setModel(ThongKeBLL.getInstance().getTableData());
+        BigDecimal tong = new BigDecimal(0);
+        for (int i = 0; i < this.jTable1.getRowCount(); i++) {
+            BigDecimal valueAtPos = new BigDecimal(this.jTable1.getValueAt(i, 3).toString());
+            this.jTable1.setValueAt(utils.bigDecimalFormatPrint(valueAtPos), i, 3);
+            tong = tong.add(valueAtPos);
+        }
+        
+        this.tongLabel.setText(utils.bigDecimalFormatPrint(tong));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +82,7 @@ public class ThongKeGUI extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        tongLabel = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -55,6 +96,11 @@ public class ThongKeGUI extends javax.swing.JPanel {
         jLabel2.setText("Đến Ngày:");
 
         jButton1.setText("Xem");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -99,8 +145,8 @@ public class ThongKeGUI extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Tổng:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("0");
+        tongLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tongLabel.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,7 +156,7 @@ public class ThongKeGUI extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
@@ -118,7 +164,7 @@ public class ThongKeGUI extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(tongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -182,6 +228,23 @@ public class ThongKeGUI extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        Date startDate = this.jDateChooser1.getDate();
+        Date endDate = this.jDateChooser2.getDate();
+        BigDecimal tong = new BigDecimal(0);
+        this.jTable1.setModel(ThongKeBLL.getInstance().getDataBetween2Days(startDate, endDate));
+        
+        for (int i = 0; i < this.jTable1.getRowCount(); i++) {
+            BigDecimal valueAtPos = new BigDecimal(this.jTable1.getValueAt(i, 3).toString());
+            this.jTable1.setValueAt(utils.bigDecimalFormatPrint(valueAtPos), i, 3);
+            tong = tong.add(valueAtPos);
+        }
+        
+        this.tongLabel.setText(utils.bigDecimalFormatPrint(tong));
+        
+    }//GEN-LAST:event_jButton1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -191,10 +254,10 @@ public class ThongKeGUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel tongLabel;
     // End of variables declaration//GEN-END:variables
 }
