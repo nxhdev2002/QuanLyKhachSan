@@ -1,10 +1,17 @@
 {
     "configurations": [
-    {
-        "type": "java",
-        "name": "Launch Java Program",
-        "request": "launch",
-        "mainClass": "hotelmanagement.HotelManagement"
-    }
+        {
+            "type": "java",
+            "name": "Launch CheckOutGUI",
+            "request": "launch",
+            "mainClass": "hotelmanagement.GUI.CheckOutGUI",
+            "projectName": "QuanLyKhachSan_561bd6fe"
+        },
+        {
+            "type": "java",
+            "name": "Launch Java Program",
+            "request": "launch",
+            "mainClass": "hotelmanagement.HotelManagement"
+        }
     ]
 }
