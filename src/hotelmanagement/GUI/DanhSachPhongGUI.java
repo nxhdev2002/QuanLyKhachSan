@@ -8,6 +8,7 @@ import hotelmanagement.GUI.Frames.ThemPhongFrame;
 import hotelmanagement.BLL.PhongBLL;
 import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.Components.PhongComponent;
+import hotelmanagement.GUI.Frames.DatPhongHangLoatFrame;
 
 import java.util.ArrayList;
 
@@ -96,6 +97,7 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         countCleaningRoom = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         phongPanel = new javax.swing.JPanel();
 
@@ -149,11 +151,18 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setText("Đặt phòng hàng loạt");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout chuthichPanelLayout = new javax.swing.GroupLayout(chuthichPanel);
         chuthichPanel.setLayout(chuthichPanelLayout);
         chuthichPanelLayout.setHorizontalGroup(
             chuthichPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chuthichPanelLayout.createSequentialGroup()
+            .addGroup(chuthichPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
@@ -180,8 +189,10 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
                 .addGap(225, 225, 225)
                 .addComponent(jButton1)
                 .addGap(10, 10, 10)
-                .addComponent(jButton3)
-                .addContainerGap(429, Short.MAX_VALUE))
+                .addGroup(chuthichPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
         chuthichPanelLayout.setVerticalGroup(
             chuthichPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +215,9 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
                         .addComponent(countCleaningRoom)
                         .addComponent(jButton1)
                         .addComponent(jButton3)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
 
         jScrollPane1.setRowHeaderView(null);
@@ -298,6 +311,11 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
         // deleteRoomFrame.add()
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        DatPhongHangLoatFrame.getInstance().setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -307,6 +325,7 @@ public class DanhSachPhongGUI extends javax.swing.JPanel {
     private javax.swing.JLabel countEmptyRoom;
     private javax.swing.JLabel countUsingRoom;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
