@@ -6,7 +6,9 @@ package hotelmanagement.GUI.Frames;
 
 import hotelmanagement.BLL.DatPhongBLL;
 import hotelmanagement.BLL.KhachHangBLL;
+import hotelmanagement.BLL.PhongBLL;
 import hotelmanagement.DTO.KhachHangDTO;
+import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.DanhSachPhongGUI;
 import hotelmanagement.utils;
 import java.awt.event.KeyEvent;
@@ -271,7 +273,7 @@ public class DatPhongHangLoatFrame extends javax.swing.JFrame {
         String gioiTinh = this.gioiTinhInput.getSelection().getActionCommand();
         String hoten = this.hotenInput.getText();
         String sdt = this.sdtInput.getText();
-        String soLuong = this.slPhongInput.getValue().toString();
+        int soLuong = Integer.parseInt(this.slPhongInput.getValue().toString());
         ArrayList<Integer> loaiPhong = new ArrayList<Integer>();
         if (this.phongDonCheckBox.isSelected()) loaiPhong.add(1);
         if (this.phongDoiCheckBox.isSelected()) loaiPhong.add(2);
@@ -321,9 +323,37 @@ public class DatPhongHangLoatFrame extends javax.swing.JFrame {
             return;
         }
         
+        ArrayList<PhongDTO> dsPhongDat = new ArrayList<>();
+        loop:
+            for (int type: loaiPhong) {
+                for (PhongDTO phong: PhongBLL.getInstance().getDataByType(type)) {
+                    dsPhongDat.add(phong);
+                    if (dsPhongDat.size() >= soLuong) break loop;
+                }
+            }
         
+        Boolean res = true;
+        for (PhongDTO phong: dsPhongDat) {
+            if (!DatPhongBLL.getInstance().addData(hoten, sdt, gioiTinh, cccd, beginDate, endDate, note, phong)) {
+                res = false;
+            }
+        }
         
-        
+        if (res) {
+            JOptionPane.showMessageDialog(frame,
+                    "Đặt phòng thành công",
+                    "Thông báo đặt phòng",
+                    JOptionPane.INFORMATION_MESSAGE);
+            DanhSachPhongGUI.getInstance().loadData();
+            this.setVisible(false);
+
+        this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(frame,
+                    "Lỗi!",
+                    "Đã xảy ra lỗi trong quá trình đặt phòng. Vui lòng thử lại",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void cccdInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cccdInputKeyTyped

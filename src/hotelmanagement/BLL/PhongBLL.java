@@ -63,10 +63,17 @@ public class PhongBLL {
         if (room == null) {
             PhongDTO Phong = new PhongDTO();
             ArrayList<PhongDTO> ds = this.loadDataByTang(Tang);
-            Phong.setTrangThai(0);
-            Phong.setSoTang(Tang);
-            Phong.setMaLoaiPhong(maLoaiPhong);
-            Phong.setSoPhong(ds.get(ds.size() - 1) .getSoPhong() + 1);
+            if (ds.size() > 0) {
+                Phong.setTrangThai(0);
+                Phong.setSoTang(Tang);
+                Phong.setMaLoaiPhong(maLoaiPhong);
+                Phong.setSoPhong(ds.get(ds.size() - 1) .getSoPhong() + 1);
+            } else {
+                Phong.setTrangThai(0);
+                Phong.setSoTang(Tang);
+                Phong.setMaLoaiPhong(maLoaiPhong);
+                Phong.setSoPhong(101);
+            }
             return PhongDAL.getInstance().addData(Phong); 
         } else {
             return PhongDAL.getInstance().activeRoom(room);
@@ -85,4 +92,15 @@ public class PhongBLL {
         }
         return null;
     }
+
+    public ArrayList<PhongDTO> getDataByType(int type) {
+        ArrayList<PhongDTO> rs = new ArrayList<>();
+        for (PhongDTO room: this.DSPhong) {
+            if (room.getMaLoaiPhong() == type) {
+                rs.add(room);
+            }
+        }
+        return rs;
+    }
+
 }
