@@ -82,7 +82,7 @@ public class DatPhongHangLoatFrame extends javax.swing.JFrame {
         phongDoiCheckBox = new javax.swing.JCheckBox();
         VIPCheckBox = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Đặt Phòng Số Lượng Lớn");
@@ -322,23 +322,30 @@ public class DatPhongHangLoatFrame extends javax.swing.JFrame {
             DanhSachPhongGUI.getInstance().loadData();
             return;
         }
-        
+    
         ArrayList<PhongDTO> dsPhongDat = new ArrayList<>();
-        loop:
-            for (int type: loaiPhong) {
-                for (PhongDTO phong: PhongBLL.getInstance().getDataByType(type)) {
-                    dsPhongDat.add(phong);
-                    if (dsPhongDat.size() >= soLuong) break loop;
-                }
-            }
         
-        Boolean res = true;
-        for (PhongDTO phong: dsPhongDat) {
-            if (!DatPhongBLL.getInstance().addData(hoten, sdt, gioiTinh, cccd, beginDate, endDate, note, phong)) {
-                res = false;
-            }
+        for (PhongDTO phong: PhongBLL.getInstance().getDataByType(loaiPhong)) {
+            dsPhongDat.add(phong);
+            if (dsPhongDat.size() >= soLuong) break;
         }
         
+        Boolean res = true;
+        if (soLuong > PhongBLL.getInstance().loadData().size()) {
+            res = false;
+            JOptionPane.showMessageDialog(frame,
+                    "Khách sạn không đủ phòng",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            for (PhongDTO phong: dsPhongDat) {
+                if (!DatPhongBLL.getInstance().addData(hoten, sdt, gioiTinh, cccd, beginDate, endDate, note, phong)) {
+                    res = false;
+                }
+            }
+        }
+
         if (res) {
             JOptionPane.showMessageDialog(frame,
                     "Đặt phòng thành công",
@@ -348,6 +355,7 @@ public class DatPhongHangLoatFrame extends javax.swing.JFrame {
             this.setVisible(false);
 
         this.dispose();
+        DanhSachPhongGUI.getInstance().loadData(); 
         } else {
             JOptionPane.showMessageDialog(frame,
                     "Lỗi!",

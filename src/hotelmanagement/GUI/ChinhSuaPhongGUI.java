@@ -88,6 +88,7 @@ public class ChinhSuaPhongGUI extends javax.swing.JFrame {
         
         // add new components
         for (DichVuDTO service: servs) {
+            if (service.getTrangThai() == 0) continue;
             DichVuComponent comp = new DichVuComponent(service, this);
             int numb = DatDichVuBLL.getInstance().getNumberByServiceId(this.DatTra, service.getMaDichVu());
             comp.setNumData(numb);

@@ -72,7 +72,7 @@ public class PhongBLL {
                 Phong.setTrangThai(0);
                 Phong.setSoTang(Tang);
                 Phong.setMaLoaiPhong(maLoaiPhong);
-                Phong.setSoPhong(101);
+                Phong.setSoPhong(Integer.parseInt(Integer.toString(Tang) + "01"));
             }
             return PhongDAL.getInstance().addData(Phong); 
         } else {
@@ -93,10 +93,11 @@ public class PhongBLL {
         return null;
     }
 
-    public ArrayList<PhongDTO> getDataByType(int type) {
+    public ArrayList<PhongDTO> getDataByType(ArrayList<Integer> type) {
         ArrayList<PhongDTO> rs = new ArrayList<>();
         for (PhongDTO room: this.DSPhong) {
-            if (room.getMaLoaiPhong() == type) {
+            if (room.getTrangThai() != 0) continue;
+            if (type.contains(room.getMaLoaiPhong())) {
                 rs.add(room);
             }
         }

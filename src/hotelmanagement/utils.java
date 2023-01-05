@@ -101,7 +101,7 @@ public class utils {
         return UUID.randomUUID().toString();
     }
 
-    public static void writeToExcell(JTable table, String name) {
+    public static boolean writeToExcell(JTable table, String name) {
             Workbook wb = new XSSFWorkbook();
             Sheet sheet = wb.createSheet(); //WorkSheet
             Row row = sheet.createRow(2); //Row created at line 3
@@ -139,16 +139,20 @@ public class utils {
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+                return false;
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+                return false;
             } finally {
                 try {
                     Desktop.getDesktop().open(new File(f.toString()));
+                    return true;
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
+            return false;
     }
 }

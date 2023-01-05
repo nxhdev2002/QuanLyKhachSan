@@ -73,7 +73,7 @@ public class ThemDichVuFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         imagePathInput = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Thêm Dịch Vụ Khách Sạn");

@@ -31,6 +31,7 @@ public class DichVuDAL {
                 DichVu.setDonGia(rs.getBigDecimal("DonGia"));
                 DichVu.setLoaiDichVu(rs.getString("LoaiDichVu"));
                 DichVu.setThumbnail(rs.getString("Thumbnail"));
+                DichVu.setTrangThai(rs.getInt("TrangThai"));
                 this.DSDichVu.add(DichVu); 
             }
         } catch (Exception e) {
@@ -41,7 +42,7 @@ public class DichVuDAL {
 
     public int addData(DichVuDTO DichVu) {
         String query = String.format(
-            "INSERT INTO DichVu(TenDichVu, DonGia, LoaiDichVu, Thumbnail) VALUES ('%1$s', %2$s, '%3$s', '%4$s')",
+            "INSERT INTO DichVu(TenDichVu, DonGia, LoaiDichVu, Thumbnail, TrangThai) VALUES ('%1$s', %2$s, '%3$s', '%4$s', 1)",
             DichVu.getTenDichVu(), DichVu.getDonGia(), DichVu.getLoaiDichVu(), DichVu.getThumbnail()
         );
         return DAL.getInstance().executeQueryUpdate(query);
@@ -55,5 +56,9 @@ public class DichVuDAL {
         return DAL.getInstance().executeQueryUpdate(query);
     }
 
-    
+    public int switchTrangThai(DichVuDTO DichVu) {
+        String TrangThai = DichVu.getTrangThai() == 1 ? "0" : "1";
+        String query = "UPDATE DichVu SET TrangThai = " + TrangThai + " WHERE MaDichVu=" + DichVu.getMaDichVu();
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
 }

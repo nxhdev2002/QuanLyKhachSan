@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Image;
+import java.awt.Component;
 import hotelmanagement.DAL.DichVuDAL;
 import hotelmanagement.DTO.DichVuDTO;
 public class DichVuBLL {
@@ -55,15 +56,12 @@ public class DichVuBLL {
 
     public void updateData(ArrayList<DichVuDTO> servs) {
         for (DichVuDTO serv: servs) {
-            String[] split = serv.getThumbnail().split("hotelmanagement/Statics/Images/");
-            String path = "/hotelmanagement/Statics/Images/" + split[1];
-            serv.setThumbnail(path);
             DichVuDAL.getInstance().updateData(serv);
         }
     }
 
     public DefaultTableModel getTableDichVu() {
-        String[] title = {"STT", "Mã Dịch Vụ", "Tên Dịch Vụ", "Đơn Giá", "Loại Dịch Vụ", "Hình Ảnh Mô Tả"};
+        String[] title = {"STT", "Mã Dịch Vụ", "Tên Dịch Vụ", "Đơn Giá", "Loại Dịch Vụ", "Hình Ảnh Mô Tả", "Trạng Thái"};
         DefaultTableModel dtm = new DefaultTableModel(null,title){
             @Override
             public Class<?> getColumnClass(int column) {
@@ -77,11 +75,14 @@ public class DichVuBLL {
             Count+=1;
             Image iconLogo = new ImageIcon(getClass().getResource(serv.getThumbnail())).getImage().getScaledInstance(75, 75,Image.SCALE_DEFAULT);
             ImageIcon img = new ImageIcon(iconLogo);
-            Object[] row = { Count, serv.getMaDichVu(), serv.getTenDichVu(), serv.getDonGia(), serv.getLoaiDichVu(), img};
+            Object[] row = { Count, serv.getMaDichVu(), serv.getTenDichVu(), serv.getDonGia(), serv.getLoaiDichVu(), img, serv.getTrangThai() == 1 ? "Mở bán" : "Tạm ngưng"};
             dtm.addRow(row);
         }
         return dtm;
     }
 
+    public void switchTrangThai(DichVuDTO serv) {
+        DichVuDAL.getInstance().switchTrangThai(serv);
+    }
 
 }

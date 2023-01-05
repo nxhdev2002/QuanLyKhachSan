@@ -170,6 +170,11 @@ public class ThongKeGUI extends javax.swing.JPanel {
         );
 
         jButton2.setText("Xuất");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -252,8 +257,24 @@ public class ThongKeGUI extends javax.swing.JPanel {
 
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
         // TODO add your handling code here:
-        utils.writeToExcell(jTable1, "ThongKe");
     }//GEN-LAST:event_jButton2KeyPressed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        if (utils.writeToExcell(jTable1, "ThongKe")) {
+            JFrame frame = new JFrame();
+                JOptionPane.showMessageDialog(frame,
+                    "Xuất file thành công! Kiểm tra thư mục Data để biết thêm chi tiết!",
+                    "Thành công",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JFrame frame = new JFrame();
+                JOptionPane.showMessageDialog(frame,
+                    "Xuất file thất bại",
+                    "Thất bại",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

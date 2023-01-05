@@ -8,7 +8,13 @@ public class DichVuDTO {
     private BigDecimal DonGia;
     private String LoaiDichVu;
     private String thumbnail;
-    
+    private int TrangThai;
+    public int getTrangThai() {
+        return TrangThai;
+    }
+    public void setTrangThai(int trangThai) {
+        TrangThai = trangThai;
+    }
     public String getThumbnail() {
         return thumbnail;
     }
