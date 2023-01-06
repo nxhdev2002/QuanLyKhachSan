@@ -15,12 +15,15 @@ import javax.swing.table.DefaultTableModel;
 
 import hotelmanagement.BLL.DatDichVuBLL;
 import hotelmanagement.BLL.LoaiPhongBLL;
+import hotelmanagement.BLL.NhanVienBLL;
 import hotelmanagement.DTO.DatTraPhongDTO;
 import hotelmanagement.DTO.DichVuDTO;
 import hotelmanagement.DTO.KhachHangDTO;
 import hotelmanagement.DTO.PhongDTO;
 import hotelmanagement.GUI.DanhSachPhongGUI;
 import hotelmanagement.utils;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  *
  * @author nguyenxuanhoang
@@ -113,6 +116,8 @@ public class CheckOutFrame extends javax.swing.JFrame {
         tienDVLabel = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         tongTienLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        manvInput = new javax.swing.JTextField();
         hoten = new javax.swing.JLabel();
         NgayBatDau1 = new javax.swing.JLabel();
         NgayKetThuc2 = new javax.swing.JLabel();
@@ -183,6 +188,10 @@ public class CheckOutFrame extends javax.swing.JFrame {
 
         tongTienLabel.setText("Tổng tiền");
 
+        jLabel8.setText("Mã NV Thu Ngân");
+
+        manvInput.setText("3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -196,7 +205,10 @@ public class CheckOutFrame extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(manvInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -225,7 +237,9 @@ public class CheckOutFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tienPhongLabel)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(manvInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -373,9 +387,19 @@ public class CheckOutFrame extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        CheckOutBLL.getInstance().checkOut(Phong, DatTra, this.soNgayO, this.TongTien);
-        DanhSachPhongGUI.getInstance().loadData();
+        int maNV = Integer.parseInt(this.manvInput.getText());
+        if (NhanVienBLL.getInstance().checkIfExist(maNV)) {
+            this.setVisible(false);
+            CheckOutBLL.getInstance().checkOut(Phong, DatTra, this.soNgayO, this.TongTien, maNV);
+            DanhSachPhongGUI.getInstance().loadData();
+        } else {
+            JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JOptionPane.showMessageDialog(frame,
+                    "MA NV khong ton tai!",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
@@ -446,6 +470,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -454,6 +479,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTextField manvInput;
     private javax.swing.JLabel sdt;
     private javax.swing.JLabel tienDVLabel;
     private javax.swing.JLabel tienPhongLabel;

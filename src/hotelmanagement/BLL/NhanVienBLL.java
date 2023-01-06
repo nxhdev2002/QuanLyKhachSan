@@ -61,4 +61,12 @@ public class NhanVienBLL {
     public int removeNhanVien(NhanVienDTO nv) {
         return NhanVienDAL.getInstance().removeNhanVien(nv); 
     }
+    
+    public boolean checkIfExist(int MaNV) {
+        loadData();
+        for (NhanVienDTO nv: this.dsNhanVien) {
+            if (nv.getMaNhanVien() == MaNV) return true;
+        }
+        return false;
+    }
 }
