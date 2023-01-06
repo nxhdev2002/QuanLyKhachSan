@@ -53,4 +53,12 @@ public class NhanVienBLL {
         }
         return null;
     } 
+    
+    public int addNhanVien(NhanVienDTO nv) {
+        return NhanVienDAL.getInstance().addNhanVien(nv);
+    }
+
+    public int removeNhanVien(NhanVienDTO nv) {
+        return NhanVienDAL.getInstance().removeNhanVien(nv); 
+    }
 }

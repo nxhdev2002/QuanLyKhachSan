@@ -5,6 +5,10 @@
 package hotelmanagement.GUI;
 
 import hotelmanagement.BLL.NhanVienBLL;
+import hotelmanagement.DTO.NhanVienDTO;
+import hotelmanagement.GUI.Frames.ThemNhanVienFrame;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,9 +29,12 @@ public class NhanVienGUI extends javax.swing.JPanel {
     }
     public NhanVienGUI() {
         initComponents();
-        this.jTable1.setModel(NhanVienBLL.getInstance().getTableNhanVien());
+        loadData();
     }
 
+    public void loadData() {
+        this.jTable1.setModel(NhanVienBLL.getInstance().getTableNhanVien());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +46,6 @@ public class NhanVienGUI extends javax.swing.JPanel {
 
         jSpinner1 = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -47,24 +53,32 @@ public class NhanVienGUI extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("Thêm NV");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sửa NV");
-
         jButton3.setText("Xoá NV");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Nguyễn Văn A", "0123456789", "2"},
-                {"2", "Trần Văn B", "0123456799", "0"},
-                {"", "", null, null}
+                {},
+                {},
+                {}
             },
             new String [] {
-                "STT", "Tên NV", "Số ĐT", "Số buổi nghỉ"
+
             }
         ));
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
@@ -100,10 +114,8 @@ public class NhanVienGUI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addGap(28, 28, 28))
+                .addGap(16, 16, 16))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,7 +133,6 @@ public class NhanVienGUI extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,10 +144,37 @@ public class NhanVienGUI extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        ThemNhanVienFrame.getInstance().setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        int row = this.jTable1.getSelectedRow();
+        NhanVienDTO nv = new NhanVienDTO();
+        nv.setMaNhanVien(Integer.parseInt(this.jTable1.getModel().getValueAt(row, 1).toString()));
+        
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if (NhanVienBLL.getInstance().removeNhanVien(nv) == 1) {
+            JOptionPane.showMessageDialog(frame,
+                    "Xoá nhân viên thành công!",
+                    "Thành công",
+                    JOptionPane.INFORMATION_MESSAGE);
+            NhanVienGUI.getInstance().loadData();
+        } else {
+            JOptionPane.showMessageDialog(frame,
+                    "Lỗi khi xoá nhân viên",
+                    "Thất bại",
+                    JOptionPane.ERROR_MESSAGE);
+            NhanVienGUI.getInstance().loadData();
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;

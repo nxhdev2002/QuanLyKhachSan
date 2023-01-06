@@ -41,4 +41,19 @@ public class NhanVienDAL {
         }
         return this.DSNhanVien;
     } 
+    
+    public int addNhanVien(NhanVienDTO nhanVien) {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String ngaySinh = sdf.format(nhanVien.getNgaySinh());
+        String query = String.format(
+                "INSERT INTO NhanVien(TenNhanVien, GioiTinh, SoDienThoai, NgaySinh, DiaChi) VALUES ('%1$s', %2$s, '%3$s', '%4$s', '%5$s')",
+                nhanVien.getTenNhanVien(), nhanVien.getGioiTinh(), nhanVien.getSoDienThoai(), ngaySinh, nhanVien.getDiaChi()
+        );
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
+
+    public int removeNhanVien(NhanVienDTO nhanVien) {
+        String query = "DELETE FROM NhanVien WHERE MaNhanVien=" + nhanVien.getMaNhanVien();
+        return DAL.getInstance().executeQueryUpdate(query);
+    }
 }
