@@ -1,0 +1,5 @@
+com\mycompany\javaswingboilerplate\MainUI.class
+com\mycompany\javaswingboilerplate\BLL\ObjectBLL.class
+com\mycompany\javaswingboilerplate\JavaSwingBoilerplate.class
+com\mycompany\javaswingboilerplate\DAL\DAL.class
+com\mycompany\javaswingboilerplate\DAL\ObjectDAL.class
